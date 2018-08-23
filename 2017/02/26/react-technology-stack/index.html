@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="React," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="HK Talk" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="在之前的项目中，使用React进行开发，这里简单介绍一下搭建React开发环境和开发过程中所用到的技术和工具，从全局去浏览一下React全家桶，也算是一个总结和记录。">
+<meta name="keywords" content="React">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React开发技术栈">
+<meta property="og:url" content="https://blog.hhking.cn/2017/02/26/react-technology-stack/index.html">
+<meta property="og:site_name" content="HK Talk">
+<meta property="og:description" content="在之前的项目中，使用React进行开发，这里简单介绍一下搭建React开发环境和开发过程中所用到的技术和工具，从全局去浏览一下React全家桶，也算是一个总结和记录。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://blog.hhking.cn/images/what-is-webpack.png">
+<meta property="og:image" content="https://blog.hhking.cn/images/component_example.png">
+<meta property="og:updated_time" content="2018-08-17T07:06:49.587Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React开发技术栈">
+<meta name="twitter:description" content="在之前的项目中，使用React进行开发，这里简单介绍一下搭建React开发环境和开发过程中所用到的技术和工具，从全局去浏览一下React全家桶，也算是一个总结和记录。">
+<meta name="twitter:image" content="https://blog.hhking.cn/images/what-is-webpack.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://blog.hhking.cn/2017/02/26/react-technology-stack/"/>
+
+
+
+
+
+  <title>React开发技术栈 | HK Talk</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HK Talk</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">hhking's blog</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.hhking.cn/2017/02/26/react-technology-stack/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hhking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HK Talk">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">React开发技术栈</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-26T20:26:12+08:00">
+                2017-02-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/关于前端/" itemprop="url" rel="index">
+                    <span itemprop="name">关于前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/02/26/react-technology-stack/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/02/26/react-technology-stack/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/02/26/react-technology-stack/" class="leancloud_visitors" data-flag-title="React开发技术栈">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>　　在之前的项目中，使用React进行开发，这里简单介绍一下搭建React开发环境和开发过程中所用到的技术和工具，从全局去浏览一下React全家桶，也算是一个总结和记录。</p>
+<a id="more"></a>
+<h3 id="项目解决方案"><a href="#项目解决方案" class="headerlink" title="项目解决方案"></a>项目解决方案</h3><ul>
+<li>多页 + Ajax + 前端框架(React) + (模块化)依赖管理(webpack/ES2015) + 状态管理(Redux)</li>
+</ul>
+<h3 id="工具列表"><a href="#工具列表" class="headerlink" title="工具列表"></a>工具列表</h3><ul>
+<li>Node环境</li>
+<li>构建工具webpack</li>
+<li>ES6语法</li>
+<li>ES6编译工具Babel</li>
+<li>框架React</li>
+<li>状态管理Redux</li>
+<li>Ajax请求库superagent</li>
+</ul>
+<h3 id="编码规范"><a href="#编码规范" class="headerlink" title="编码规范"></a>编码规范</h3><ul>
+<li>使用Airbnb的React编码规范，实际使用中根据实际情况调整<br><a href="https://github.com/hhking/javascript/tree/master/react" target="_blank" rel="noopener">Airbnb React/JSX Style  Guide</a></li>
+</ul>
+<h3 id="Node-amp-npm"><a href="#Node-amp-npm" class="headerlink" title="Node &amp; npm"></a>Node &amp; npm</h3><p>　　首先要安装Node.js，这是整个工程的一个运行环境。<br>　　Node中的path模块在项目的配置中比较常用，这里列举比较常用的方法。</p>
+<h4 id="Node-path模块"><a href="#Node-path模块" class="headerlink" title="Node path模块"></a>Node path模块</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 首先需要引入path --&gt;</span><br><span class="line">var path = require(&apos;path&apos;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>path.join()</p>
+<p>path.join方法用于连接路径。该方法会正确使用当前系统的路径分隔符，Unix系统是”/“，Windows系统是”\“，可以解决不同平台的兼容问题。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">path.join(mydir, &quot;src&quot;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>path.resolve()</p>
+<p>path.resolve() 将相对路径转为绝对路径</p>
+<p>它可以接受多个参数，依次表示所要进入的路径，直到将最后一个参数转为绝对路径。如果根据参数无法得到绝对路径，就以当前所在路径作为基准。除了根目录，该方法的返回值都不带尾部的斜杠。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">path.resolve(&apos;/foo/bar&apos;, &apos;./baz&apos;)</span><br><span class="line">// &apos;/foo/bar/baz&apos;Â</span><br><span class="line"></span><br><span class="line">path.resolve(&apos;/foo/bar&apos;, &apos;/tmp/file/&apos;)</span><br><span class="line">// &apos;/tmp/file&apos;</span><br><span class="line"></span><br><span class="line">path.resolve(&apos;wwwroot&apos;, &apos;static_files/png/&apos;, &apos;../gif/image.gif&apos;)</span><br><span class="line">// 如果当前目录是/home/myself/node，返回</span><br><span class="line">// /home/myself/node/wwwroot/static_files/gif/image.gif</span><br></pre></td></tr></table></figure>
+<p>详细可以看<a href="https://javascript.ruanyifeng.com/nodejs/path.html" target="_blank" rel="noopener">阮一峰讲的Path模块</a></p>
+<h4 id="npm"><a href="#npm" class="headerlink" title="npm"></a>npm</h4><p>　　npm是Node的模块管理器，功能极其强大</p>
+</li>
+<li><p>常用命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 自动安装package.json里保存的模块 --&gt;</span><br><span class="line">npm install</span><br><span class="line">&lt;!-- 安装指定的模块 --&gt;</span><br><span class="line">npm install --save-dev &lt;packageName&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置文件： package.json<br>保存了Node.js的配置，可以手动创建，也可以通过npm init命令来进行配置</p>
+</li>
+</ul>
+<h3 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h3><p>  　　webpack是前端资源加载/打包工具，目的就是把有依赖关系的各种文件打包成一系列的静态资源。<br>  <img src="/images/what-is-webpack.png" alt="imgage"></p>
+<p>  业界通用的方案是直接用npm scripts来定义项目内置脚本</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//example</span><br><span class="line">//--profile输出性能数据，可以看到每一步的耗时</span><br><span class="line">//--colors 输出结果带彩色，比如：会用红色显示耗时较长的步骤</span><br><span class="line">//--hot 模块热替换</span><br><span class="line">&quot;start&quot;: &quot;cross-env NODE_ENV=development webpack-dev-server --progress  --profile --colors --hot --content-base ../../../&quot;</span><br><span class="line"></span><br><span class="line">npm run start</span><br></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 安装webpack --&gt;</span><br><span class="line">npm install -g webpack</span><br><span class="line">&lt;!-- webpack配套的web服务器webpack-dev-server --&gt;</span><br><span class="line">npm install --save-dev webpack-dev-server</span><br></pre></td></tr></table></figure>
+<h3 id="React"><a href="#React" class="headerlink" title="React"></a>React</h3><p>　　React把用户界面抽象成一个组件，例如按钮组件Button、对话框组件Dialog、日期组件Calendar，一个完整的页面就是开发者通过组合这些组件，最终得到的功能丰富、可交互的页面。由于有了组件这层抽象，整个结构更加清晰，复用也更加容易。</p>
+<p><img src="/images/component_example.png" alt="image"></p>
+<p>React具有以下特点</p>
+<ul>
+<li>专注视图层</li>
+<li>Virtual DOM</li>
+<li>函数式编程</li>
+</ul>
+<h3 id="ECMAScript-6"><a href="#ECMAScript-6" class="headerlink" title="ECMAScript 6"></a>ECMAScript 6</h3><p>　　ES6十大特性</p>
+<ul>
+<li>Default Parameters（默认参数） in ES6</li>
+<li>Template Literals （模板文本）in ES6</li>
+<li>Multi-line Strings （多行字符串）in ES6</li>
+<li>Destructuring Assignment （解构赋值）in ES6</li>
+<li>Enhanced Object Literals （增强的对象文本）in ES6</li>
+<li>Arrow Functions （箭头函数）in ES6</li>
+<li>Promises in ES6</li>
+<li>Block-Scoped Constructs Let and Const（块作用域构造Let and Const）</li>
+<li>Classes（类） in ES6</li>
+<li>Modules（模块） in ES6</li>
+</ul>
+<p>　　使用ES6语法，可以使用新的语法的特性，减少大量冗余的代码，提高编码的效率，同时也能提高程序的健壮性。</p>
+<p>可以通过下面这本书来学习ES6<br><a href="https://es6.ruanyifeng.com/" target="_blank" rel="noopener">ECMAScript 6 入门</a>:阮一峰的一本开源的 JavaScript 语言教程，全面介绍 ECMAScript 6 新引入的语法特性。</p>
+<h3 id="ES6编译工具：Babel"><a href="#ES6编译工具：Babel" class="headerlink" title="ES6编译工具：Babel"></a>ES6编译工具：Babel</h3><p>　　怎么使用ES6？使用ES6编译工具Babel，将将ES6代码转为ES5代码，从而在现有环境执行。当然，也有一些方法特性在一些低级浏览器还不支持，我们可以加入Babel的polyfill来支持。<br>　　Babel的配置文件是.babelrc，用来设置转码规则和插件。</p>
+<h3 id="Redux"><a href="#Redux" class="headerlink" title="Redux"></a>Redux</h3><p>　　Redux是Flux架构的的优化和扩展<br>在复杂应用中和React结合使用，管理React的数据状态，让React专注于视图层<br>但是对于简单的UI层，Redux就不是必要的，用了反而增加复杂性</p>
+<h3 id="CSS-Modules"><a href="#CSS-Modules" class="headerlink" title="CSS Modules"></a>CSS Modules</h3><ul>
+<li>样式局部化，解决命名冲突和全局污染问题</li>
+<li>class名的生成规则配置灵活</li>
+<li>组件化，一个组件的JavaScript里就包含了组件所依赖的CSS</li>
+</ul>
+<p>　　配合React，我们可以使用简化CSSModules的库<a href="https://github.com/gajus/react-css-modules" target="_blank" rel="noopener">react-css-modules</a></p>
+<h3 id="Ajax请求库"><a href="#Ajax请求库" class="headerlink" title="Ajax请求库"></a>Ajax请求库</h3><ul>
+<li><p><a href="https://github.com/visionmedia/superagent" target="_blank" rel="noopener">superagent</a><br>Node.js里一个方便的请求代理模块，我们用它来实现我们的Ajax请求</p>
+</li>
+<li><p><a href="https://github.com/ded/reqwest" target="_blank" rel="noopener">reqwest</a></p>
+</li>
+<li><p><a href="https://github.com/mzabriskie/axios" target="_blank" rel="noopener">axios</a><br>支持Promise</p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch" target="_blank" rel="noopener">fetch</a><br>需要配合<a href="https://github.com/github/fetch" target="_blank" rel="noopener">fetch polyfill</a><br>缺少进度progress，中断abort等一些方法</p>
+</li>
+</ul>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
+<li>提升React性能的<a href="https://github.com/facebook/immutable-js/" target="_blank" rel="noopener">Immutable</a>库，以及配套的PureRender库(react-immutable-render-mixin)(<a href="https://github.com/jurassix/react-immutable-render-mixin" target="_blank" rel="noopener">https://github.com/jurassix/react-immutable-render-mixin</a>)</li>
+<li>动画库<a href="https://github.com/chenglou/react-motion" target="_blank" rel="noopener">React Motion</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>请我喝一杯</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="hhking 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="hhking 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    hhking
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://blog.hhking.cn/2017/02/26/react-technology-stack/" title="React开发技术栈">https://blog.hhking.cn/2017/02/26/react-technology-stack/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/React/" rel="tag"># React</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/19/npm-install/" rel="next" title="npm install慢或者无响应解决方案">
+                <i class="fa fa-chevron-left"></i> npm install慢或者无响应解决方案
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/04/mobile-refactoring-mark/" rel="prev" title="移动端重构笔记">
+                移动端重构笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="hhking" />
+            
+              <p class="site-author-name" itemprop="name">hhking</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/hhking" target="_blank" title="GitHub" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://xuyuwas.github.io/" title="XuYuwas" target="_blank">XuYuwas</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://weigrand.com/" title="2到正无穷" target="_blank">2到正无穷</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#项目解决方案"><span class="nav-number">1.</span> <span class="nav-text">项目解决方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工具列表"><span class="nav-number">2.</span> <span class="nav-text">工具列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编码规范"><span class="nav-number">3.</span> <span class="nav-text">编码规范</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Node-amp-npm"><span class="nav-number">4.</span> <span class="nav-text">Node &amp; npm</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Node-path模块"><span class="nav-number">4.1.</span> <span class="nav-text">Node path模块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#npm"><span class="nav-number">4.2.</span> <span class="nav-text">npm</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#webpack"><span class="nav-number">5.</span> <span class="nav-text">webpack</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#React"><span class="nav-number">6.</span> <span class="nav-text">React</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ECMAScript-6"><span class="nav-number">7.</span> <span class="nav-text">ECMAScript 6</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ES6编译工具：Babel"><span class="nav-number">8.</span> <span class="nav-text">ES6编译工具：Babel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Redux"><span class="nav-number">9.</span> <span class="nav-text">Redux</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS-Modules"><span class="nav-number">10.</span> <span class="nav-text">CSS Modules</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ajax请求库"><span class="nav-number">11.</span> <span class="nav-text">Ajax请求库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他"><span class="nav-number">12.</span> <span class="nav-text">其他</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hhking</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io" rel="external nofollow">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next" rel="external nofollow">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'xbh9ALj1p4Tty1EOONwwD4NU-gzGzoHsz',
+        appKey: '8yJBzSbGA2fQdbVC0Oa5LXsH',
+        placeholder: '说点什么...',
+        avatar:'mp',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("xbh9ALj1p4Tty1EOONwwD4NU-gzGzoHsz", "8yJBzSbGA2fQdbVC0Oa5LXsH");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
