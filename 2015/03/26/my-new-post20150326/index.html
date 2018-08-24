@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="前端,jQuery,tags," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="HK Talk" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="记录一下这两天写的。  实现如下对待选标签的操作  点击待选标签列表中的标签，标签从原来的位置消失，出现在输入框中 点击标签上的X图标或者按退格键删除已选的标签，被删除的标签会回到原来待选标签的位置 输入框可以输入标签文字后按回车键、空格键或者输入框失去焦点时自动生成标签">
+<meta name="keywords" content="前端,jQuery,tags">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jQuery实现输入框标签的自动添加和删除等操作">
+<meta property="og:url" content="https://blog.hhking.cn/2015/03/26/my-new-post20150326/index.html">
+<meta property="og:site_name" content="HK Talk">
+<meta property="og:description" content="记录一下这两天写的。  实现如下对待选标签的操作  点击待选标签列表中的标签，标签从原来的位置消失，出现在输入框中 点击标签上的X图标或者按退格键删除已选的标签，被删除的标签会回到原来待选标签的位置 输入框可以输入标签文字后按回车键、空格键或者输入框失去焦点时自动生成标签">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://7xi86v.com1.z0.glb.clouddn.com/tags1.jpg">
+<meta property="og:image" content="http://7xi86v.com1.z0.glb.clouddn.com/tags2.jpg">
+<meta property="og:updated_time" content="2018-07-27T10:31:07.652Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jQuery实现输入框标签的自动添加和删除等操作">
+<meta name="twitter:description" content="记录一下这两天写的。  实现如下对待选标签的操作  点击待选标签列表中的标签，标签从原来的位置消失，出现在输入框中 点击标签上的X图标或者按退格键删除已选的标签，被删除的标签会回到原来待选标签的位置 输入框可以输入标签文字后按回车键、空格键或者输入框失去焦点时自动生成标签">
+<meta name="twitter:image" content="http://7xi86v.com1.z0.glb.clouddn.com/tags1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://blog.hhking.cn/2015/03/26/my-new-post20150326/"/>
+
+
+
+
+
+  <title>jQuery实现输入框标签的自动添加和删除等操作 | HK Talk</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HK Talk</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">hhking's blog</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.hhking.cn/2015/03/26/my-new-post20150326/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hhking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HK Talk">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">jQuery实现输入框标签的自动添加和删除等操作</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-03-26T12:51:44+08:00">
+                2015-03-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/关于前端/" itemprop="url" rel="index">
+                    <span itemprop="name">关于前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2015/03/26/my-new-post20150326/" class="leancloud_visitors" data-flag-title="jQuery实现输入框标签的自动添加和删除等操作">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>记录一下这两天写的。</strong></p>
+<hr>
+<h3 id="实现如下对待选标签的操作"><a href="#实现如下对待选标签的操作" class="headerlink" title="实现如下对待选标签的操作"></a>实现如下对待选标签的操作</h3><blockquote>
+<ul>
+<li>点击待选标签列表中的标签，标签从原来的位置消失，出现在输入框中</li>
+<li>点击标签上的X图标或者按退格键删除已选的标签，被删除的标签会回到原来待选标签的位置</li>
+<li>输入框可以输入标签文字后按回车键、空格键或者输入框失去焦点时自动生成标签</li>
+</ul>
+</blockquote>
+<a id="more"></a>
+<hr>
+<h3 id="截图展示"><a href="#截图展示" class="headerlink" title="截图展示"></a>截图展示</h3><ul>
+<li><p>部分效果图1：<br><img src="http://7xi86v.com1.z0.glb.clouddn.com/tags1.jpg" alt="效果图1"></p>
+</li>
+<li><p>部分效果图1：<br><img src="http://7xi86v.com1.z0.glb.clouddn.com/tags2.jpg" alt="效果图2"></p>
+</li>
+</ul>
+<hr>
+<h3 id="实现方案"><a href="#实现方案" class="headerlink" title="实现方案"></a>实现方案</h3><h4 id="界面方面"><a href="#界面方面" class="headerlink" title="界面方面"></a>界面方面</h4><blockquote>
+<ul>
+<li>首先要注意到，看上去输入框中出现的标签，实际上并不是在输入框中，而是在input之前通过添加span（标签）来实现，也就是说添加的标签事实上是在input之外的；</li>
+<li>通过外围的div包住input和span，设置边框，去掉input原来的表框，便造成视觉上的input的边框，添加的标签也出现在这个边框里；</li>
+</ul>
+</blockquote>
+<p>如下代码：</p>
+<ul>
+<li><p>html:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=<span class="string">"label_in"</span>&gt;</span><br><span class="line">            &lt;p&gt;产品类别&lt;b&gt;*&lt;/b&gt;:&lt;/p&gt;</span><br><span class="line">            &lt;div class=<span class="string">"area"</span>&gt;</span><br><span class="line">                &lt;div class=<span class="string">"add"</span>&gt;</span><br><span class="line">                    &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> name=<span class="string">"input"</span> placeholder=<span class="string">"输入标签..."</span> /&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">                &lt;br class=<span class="string">"clear"</span> /&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>css:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">.area&#123;</span><br><span class="line">    width: 960px;</span><br><span class="line">    border: 1px solid <span class="comment">#a09d9d;</span></span><br><span class="line">&#125;</span><br><span class="line">.add &#123;</span><br><span class="line">    <span class="built_in">float</span>: left;</span><br><span class="line">    line-height: 28px;</span><br><span class="line">    overflow: hidden;</span><br><span class="line">    border: none;</span><br><span class="line">&#125;</span><br><span class="line">input &#123;</span><br><span class="line">    <span class="built_in">float</span>: left;</span><br><span class="line">    height: 28px;</span><br><span class="line">    margin: 5px 0;</span><br><span class="line">    padding-left: 12px;</span><br><span class="line">    line-height: 28px;</span><br><span class="line">    font-size: 18px;</span><br><span class="line">    border: none;</span><br><span class="line">    outline: none;</span><br><span class="line">&#125;</span><br><span class="line">.clear&#123;</span><br><span class="line">    clear: both;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="jQuery实现功能方面"><a href="#jQuery实现功能方面" class="headerlink" title="jQuery实现功能方面"></a>jQuery实现功能方面</h4><blockquote>
+<ul>
+<li>标签点击事件。对整个标签列表进行绑定点击事件，注意要判断点击到span时候执行，否则点到margin（空白处）会将整个父节点作为目标。点击标签时，先复制clone()点击的span，在插入insertBefore()到input之前，并添加X图标；然后将原来的hide()（理论上也可以删除）。这里的num是原来在span标签里的排序位置，即index值，作为input之前标签的id，用于后面删除时，定位要显示的span，这个样就可以将标签恢复到原来位置。</li>
+</ul>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//点击事件，点击标签选择，标签出现在输入框，原来位置隐藏</span><br><span class="line">        $(<span class="string">".label_type"</span>).click(<span class="keyword">function</span> (e) &#123;</span><br><span class="line">            var num = $(e.target).index();</span><br><span class="line">            var a = $(e.target).attr(<span class="string">'class'</span>);</span><br><span class="line">            //判断点的不是空白地方（标签的父标签）</span><br><span class="line">            <span class="keyword">if</span> (a != <span class="string">"label_type"</span>) &#123;</span><br><span class="line">                $(e.target).<span class="built_in">clone</span>().insertBefore($(<span class="string">".add input"</span>)).addClass(<span class="string">"ad"</span>).attr(<span class="string">'id'</span>, num).append(<span class="string">"&lt;b class='close'&gt;ⓧ&lt;/b&gt;"</span>);</span><br><span class="line">                $(e.target).hide();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>X图标点击事件。将点击的那个span删除，在通过id定位原来的位置，将其show()显示出来。</li>
+</ul>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//点击事件，点击X号时候删除标签，并在原来位置显示</span><br><span class="line">        $(<span class="string">".add"</span>).click(<span class="keyword">function</span> (e) &#123;</span><br><span class="line">            <span class="keyword">if</span> ($(e.target).html() == <span class="string">"ⓧ"</span>) &#123;</span><br><span class="line">                var numid = $(e.target).closest(<span class="string">"span"</span>).attr(<span class="string">'id'</span>);</span><br><span class="line">                $(e.target).closest(<span class="string">"span"</span>).remove();</span><br><span class="line">                $(<span class="string">".label_type span"</span>).eq(numid).show();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>退格键的keyCode==8，执行删除操作。获取input之前的那个元素，并将其删除，同时通过id恢复原来的标签。这里要注意输入框中为空是执行，当输入框中有内容时正常删除操作。</li>
+<li>回车、空格以及输入框失去焦点都执行同一个操作。这里调用autocomplete()函数执行操作。</li>
+</ul>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">//按键事件</span><br><span class="line">        $(document).keydown(<span class="keyword">function</span> (e) &#123;</span><br><span class="line">            //获取输入框里的内容</span><br><span class="line">            var content = $(<span class="string">"input"</span>).val();</span><br><span class="line">            //按下退格键时触发时间</span><br><span class="line">            <span class="keyword">if</span> (e.keyCode == 8) &#123;</span><br><span class="line">                //判断输入框里是否为空，为空时退格键触发删除标签</span><br><span class="line">                <span class="keyword">if</span> (content == <span class="string">""</span>) &#123;</span><br><span class="line">                    //获取里输入框最近一个标签的id，然后删除，并通过id定位到便签原来的位置并显示出来</span><br><span class="line">                    var numid = $(<span class="string">".add input"</span>).prev().attr(<span class="string">'id'</span>);</span><br><span class="line">                    $(<span class="string">".add input"</span>).prev().remove();</span><br><span class="line">                    $(<span class="string">".label_type span"</span>).eq(numid).show();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (e.keyCode == 13 || e.keyCode == 32) &#123; //回车键和空格键事件</span><br><span class="line">                //调用函数</span><br><span class="line">                autocomplete();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        //输入框失去焦点时进行匹配生成标签</span><br><span class="line">        $(<span class="string">"input"</span>).blur(autocomplete);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>autocomplete()函数如下。这里对输入的标签通过for循环一个一个与标签列表进行匹配</li>
+</ul>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">//遍历匹配生成对应标签</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">autocomplete</span></span>() &#123;</span><br><span class="line">    var content = $(<span class="string">"input"</span>).val();</span><br><span class="line">    //获取标签的总个数，用于遍历</span><br><span class="line">    var len = $(<span class="string">".label_type"</span>).children().length;</span><br><span class="line">    //遍历标签，判断输入的是否存在于标签了</span><br><span class="line">    <span class="keyword">for</span> (var i = 0; i &lt; len; i++) &#123;</span><br><span class="line">        var con = $(<span class="string">".label_type span"</span>).eq(i).text();</span><br><span class="line">        //这里判断输入框里是否为空，并且进行匹配，输入只需要匹配到部分，方便输入</span><br><span class="line">        <span class="keyword">if</span> (content != <span class="string">""</span> &amp;&amp; con.match(content)) &#123;</span><br><span class="line">            $(<span class="string">".label_type span"</span>).eq(i).<span class="built_in">clone</span>().insertBefore($(<span class="string">".add input"</span>)).addClass(<span class="string">"ad"</span>).attr(<span class="string">'id'</span>, i).append(<span class="string">"&lt;b class='close'&gt;ⓧ&lt;/b&gt;"</span>);</span><br><span class="line">            $(<span class="string">".label_type span"</span>).eq(i).hide();</span><br><span class="line">            $(<span class="string">"input"</span>).val(<span class="string">""</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Demo和源码"><a href="#Demo和源码" class="headerlink" title="Demo和源码"></a>Demo和源码</h3><p><a href="http://calltesting.sinaapp.com/tags/tags.html" target="_blank" rel="noopener">效果展示：Demo</a><br><a href="https://github.com/hhking/Label_operation" target="_blank" rel="noopener">源代码地址</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>请我喝一杯</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="hhking 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="hhking 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    hhking
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://blog.hhking.cn/2015/03/26/my-new-post20150326/" title="jQuery实现输入框标签的自动添加和删除等操作">https://blog.hhking.cn/2015/03/26/my-new-post20150326/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+            <a href="/tags/jQuery/" rel="tag"># jQuery</a>
+          
+            <a href="/tags/tags/" rel="tag"># tags</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/03/23/20150323/" rel="next" title="之前写的一些东西--简单图片轮播·jQuery小应用·PSD稿还原">
+                <i class="fa fa-chevron-left"></i> 之前写的一些东西--简单图片轮播·jQuery小应用·PSD稿还原
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/19/npm-install/" rel="prev" title="npm install慢或者无响应解决方案">
+                npm install慢或者无响应解决方案 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div id="gitalk-container"></div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="hhking" />
+            
+              <p class="site-author-name" itemprop="name">hhking</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/hhking" target="_blank" title="GitHub" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://xuyuwas.github.io/" title="XuYuwas" target="_blank">XuYuwas</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://weigrand.com/" title="2到正无穷" target="_blank">2到正无穷</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#实现如下对待选标签的操作"><span class="nav-number">1.</span> <span class="nav-text">实现如下对待选标签的操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#截图展示"><span class="nav-number">2.</span> <span class="nav-text">截图展示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现方案"><span class="nav-number">3.</span> <span class="nav-text">实现方案</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#界面方面"><span class="nav-number">3.1.</span> <span class="nav-text">界面方面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#jQuery实现功能方面"><span class="nav-number">3.2.</span> <span class="nav-text">jQuery实现功能方面</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Demo和源码"><span class="nav-number">4.</span> <span class="nav-text">Demo和源码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hhking</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io" rel="external nofollow">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next" rel="external nofollow">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script src="/js/src/md5.min.js"></script>
+
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: 'b0a40dabf23e7a07140f',
+      clientSecret: 'b2279465e24b03c105ae5621e101305dc01a1573',
+      repo: 'hhking.github.io',
+      owner: 'hhking',
+      admin: ['hhking'],
+      id: md5(location.pathname),
+      labels: ['gitalk'],
+      perPage: 10,
+      pagerDirection: 'last',
+      createIssueManually: false,
+      distractionFreeMode: true
+    })
+
+    gitalk.render('gitalk-container')
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("xbh9ALj1p4Tty1EOONwwD4NU-gzGzoHsz", "8yJBzSbGA2fQdbVC0Oa5LXsH");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

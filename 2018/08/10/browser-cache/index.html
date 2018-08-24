@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="前端,浏览器缓存," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="HK Talk" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="相信很多前端都遇到过类似的情景：为什么更新了内容，刷新页面没有生效？被产品或测试追问：不是说问题解决了吗？为什么还是有问题？刷新也不行！ 浏览器的缓存机制也就是HTTP缓存机制，是每个前端都必须理解一个点，了解浏览器缓存的机制，可以让我们在开发和排查问题中，避开很多坑；也能解释很多遇到的关于缓存的“神奇”问题；也可以针对缓存制定策略，做出优化，提升用户体验。 这里对浏览器缓存机制的学习做个总结">
+<meta name="keywords" content="前端,浏览器缓存">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浏览器的缓存机制">
+<meta property="og:url" content="https://blog.hhking.cn/2018/08/10/browser-cache/index.html">
+<meta property="og:site_name" content="HK Talk">
+<meta property="og:description" content="相信很多前端都遇到过类似的情景：为什么更新了内容，刷新页面没有生效？被产品或测试追问：不是说问题解决了吗？为什么还是有问题？刷新也不行！ 浏览器的缓存机制也就是HTTP缓存机制，是每个前端都必须理解一个点，了解浏览器缓存的机制，可以让我们在开发和排查问题中，避开很多坑；也能解释很多遇到的关于缓存的“神奇”问题；也可以针对缓存制定策略，做出优化，提升用户体验。 这里对浏览器缓存机制的学习做个总结">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://blog.hhking.cn/images/browser-cache/browser-cache1.png">
+<meta property="og:image" content="https://blog.hhking.cn/images/browser-cache/browser-cache2.png">
+<meta property="og:image" content="https://blog.hhking.cn/images/browser-cache/browser-cache3.png">
+<meta property="og:image" content="https://blog.hhking.cn/images/browser-cache/browser-cache4.png">
+<meta property="og:image" content="https://blog.hhking.cn/images/browser-cache/browser-cache5.png">
+<meta property="og:image" content="https://blog.hhking.cn/images/browser-cache/browser-cache.png">
+<meta property="og:updated_time" content="2018-08-17T07:07:07.613Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="浏览器的缓存机制">
+<meta name="twitter:description" content="相信很多前端都遇到过类似的情景：为什么更新了内容，刷新页面没有生效？被产品或测试追问：不是说问题解决了吗？为什么还是有问题？刷新也不行！ 浏览器的缓存机制也就是HTTP缓存机制，是每个前端都必须理解一个点，了解浏览器缓存的机制，可以让我们在开发和排查问题中，避开很多坑；也能解释很多遇到的关于缓存的“神奇”问题；也可以针对缓存制定策略，做出优化，提升用户体验。 这里对浏览器缓存机制的学习做个总结">
+<meta name="twitter:image" content="https://blog.hhking.cn/images/browser-cache/browser-cache1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://blog.hhking.cn/2018/08/10/browser-cache/"/>
+
+
+
+
+
+  <title>浏览器的缓存机制 | HK Talk</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HK Talk</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">hhking's blog</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.hhking.cn/2018/08/10/browser-cache/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hhking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HK Talk">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">浏览器的缓存机制</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-10T14:36:08+08:00">
+                2018-08-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/关于前端/" itemprop="url" rel="index">
+                    <span itemprop="name">关于前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/08/10/browser-cache/" class="leancloud_visitors" data-flag-title="浏览器的缓存机制">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>相信很多前端都遇到过类似的情景：<br>为什么更新了内容，刷新页面没有生效？<br>被产品或测试追问：不是说问题解决了吗？为什么还是有问题？刷新也不行！</p>
+<p>浏览器的缓存机制也就是HTTP缓存机制，是每个前端都必须理解一个点，了解浏览器缓存的机制，可以让我们在开发和排查问题中，避开很多坑；也能解释很多遇到的关于缓存的“神奇”问题；也可以针对缓存制定策略，做出优化，提升用户体验。</p>
+<p>这里对浏览器缓存机制的学习做个总结和笔记！<br><a id="more"></a></p>
+<h2 id="缓存的作用"><a href="#缓存的作用" class="headerlink" title="缓存的作用"></a>缓存的作用</h2><ul>
+<li>减少网络带宽消耗</li>
+<li>缓解服务器压力</li>
+<li>减少网络延迟，加快网页打开速度</li>
+</ul>
+<h2 id="缓存过程"><a href="#缓存过程" class="headerlink" title="缓存过程"></a>缓存过程</h2><p>浏览器和服务器进行通信的方式是：浏览器发起 HTTP 请求，服务器响应请求。浏览器是怎么决定是否缓存资源、怎么缓存？根据响应头！</p>
+<p>缓存的大致过程如下：</p>
+<ol>
+<li>浏览器向服务器发起请求时，会先在浏览器缓存中查找该请求的结果和缓存标识，判断是否需要向服务器发起请求；</li>
+<li>拿到请求结果，会根据响应报文中 HTTP 头的缓存标识，决定是否缓存请求结果；</li>
+<li>浏览器每次拿到返回的请求结果都会将该结果和缓存标识存入浏览器缓存中；</li>
+</ol>
+<p>根据是否需要向服务器重新发起 HTTP 请求将缓存过程分成：强制缓存和协商缓存。</p>
+<h3 id="强制缓存阶段-本地缓存"><a href="#强制缓存阶段-本地缓存" class="headerlink" title="强制缓存阶段(本地缓存)"></a>强制缓存阶段(本地缓存)</h3><h4 id="强制缓存过程"><a href="#强制缓存过程" class="headerlink" title="强制缓存过程"></a>强制缓存过程</h4><p>强制缓存阶段就是在浏览器缓存中查找请求结果和缓存标识，并根据该结果的缓存规则来决定是否使用该缓存结果的过程。</p>
+<p>这个阶段有三种情况：</p>
+<ol>
+<li><p>没有查找到请求结果和缓存标识，则强制缓存失效，这时浏览器向服务器发起 HTTP 请求(第一次发起请求就属于这种情况)<br><img src="/images/browser-cache/browser-cache1.png" alt="images"></p>
+</li>
+<li><p>存在缓存标识，但是缓存已失效，则强制缓存不命中，这时使用协商缓存<br><img src="/images/browser-cache/browser-cache2.png" alt="images"></p>
+</li>
+<li><p>存在缓存结果和缓存标识，缓存结果有效，则命中强制缓存，直接返回缓存结果<br><img src="/images/browser-cache/browser-cache3.png" alt="images"></p>
+</li>
+</ol>
+<h4 id="强制缓存规则"><a href="#强制缓存规则" class="headerlink" title="强制缓存规则"></a>强制缓存规则</h4><p>在强制缓存过程中，怎么判断缓存是否有效（也就是上面的情况 2 和 3）？<br>控制强制缓存的是响应报文中 HTTP 头的 Pragma、 Expires 和 Cache-Control 字段，其中 Cache-control 优先级最高。</p>
+<h5 id="Cache-Control"><a href="#Cache-Control" class="headerlink" title="Cache-Control"></a>Cache-Control</h5><p>在 HTTP/1.1 中，Cache-Control 是最重要的规则，不仅是优先级最高，而且包含了 <strong>缓存策略</strong> 和 <strong>过期策略</strong></p>
+<p>语法为：<code>Cache-Control：cache-directive</code>，cache-directive 有如下取值(比较常见的是前五个)：</p>
+<table>
+<thead>
+<tr>
+<th>cache-directive</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>public</td>
+<td>所有内容都将被缓存（客户端和代理服务器都可以缓存）</td>
+</tr>
+<tr>
+<td>private</td>
+<td>所有内容只有客户端可以缓存，代理服务器不缓存，Cache-control 的默认取值</td>
+</tr>
+<tr>
+<td>no-store</td>
+<td>所有内容都不会被缓存，既不使用强制缓存，也不使用协商缓存</td>
+</tr>
+<tr>
+<td>no-cache</td>
+<td>客户端缓存内容，但是是否使用缓存需要通过协商缓存来验证决定(相当于 max-age:0,must-revalidate)</td>
+</tr>
+<tr>
+<td>max-age</td>
+<td>缓存内容将在 xxx 秒后失效（相对值）</td>
+</tr>
+<tr>
+<td>s-maxage</td>
+<td>同上, 覆盖 max-age, 且只在代理服务器上有效, 所以依赖 public 设置</td>
+</tr>
+<tr>
+<td>max-stale</td>
+<td>指定时间内, 即使缓存过时, 资源依然有效</td>
+</tr>
+<tr>
+<td>min-fresh</td>
+<td>缓存的资源至少要保持指定时间的新鲜期</td>
+</tr>
+<tr>
+<td>must-revalidation / proxy-revalidation</td>
+<td>如果缓存失效, 强制重新向服务器(或代理)发起验证 (因为max-stale等字段可能改变缓存的失效时间)</td>
+</tr>
+<tr>
+<td>only-if-cached</td>
+<td>仅仅返回已经缓存的资源, 不向服务器请求, 若无缓存则返回504</td>
+</tr>
+<tr>
+<td>no-transform</td>
+<td>强制要求代理服务器不要对资源进行转换, 禁止代理服务器对 Content-Encoding, Content-Range, Content-Type字段的修改(因此代理的gzip压缩将不被允许)</td>
+</tr>
+</tbody>
+</table>
+<p><em>当 max-age 与 max-stale 和 min-fresh 同时使用时, 它们的设置相互之间独立生效, 但是客户端总是采用最保守的缓存策略</em></p>
+<h5 id="Pragma"><a href="#Pragma" class="headerlink" title="Pragma"></a>Pragma</h5><p>Pragma 是 http/1.0 字段, 通常设置为 Pragma:no-cache, 作用同 Cache-Control:no-cache. 为了向下兼容有些网站会加上这个配置；<br>在 chrome 开发者工具 Network 中, 勾选 Disable cache 时, 浏览器会自动带上了 Pragma 字段</p>
+<h5 id="Expires"><a href="#Expires" class="headerlink" title="Expires"></a>Expires</h5><p>Expires 是 HTTP/1.0 (现在浏览器默认使用的是 HTTP/1.1)控制网页缓存的字段，指定缓存到期的 GMT(格林尼治时间) 的绝对时间。<br>但是：响应报文中 Expires 所定义的缓存时间是相对服务器上的时间而言的，如果客户端的时间和服务端的时间不一致（比如用户自己修改了客户端时间），缓存时间就没有意义了。<br>为了解决这个问题，于是 HTTP/1.1 新增了 Cache-control 来定义缓存过期时间。</p>
+<h5 id="启发式缓存"><a href="#启发式缓存" class="headerlink" title="启发式缓存"></a>启发式缓存</h5><p>如果 Expires, Cache-Control: max-age, 或 Cache-Control:s-maxage 都没有在响应头中出现, 并且也没有其它缓存的设置, 那么浏览器默认会采用一个启发式的算法:<br>通常会取响应头的两个时间字段相减 Date - Last-Modified 值的 10% 作为缓存时间。</p>
+<h5 id="from-memory-cache-from-disk-cache"><a href="#from-memory-cache-from-disk-cache" class="headerlink" title="from memory cache/from disk cache"></a>from memory cache/from disk cache</h5><p>在 chrome 开发者工具 Network 中，我们经常会看到 200 from memory cache 或者 from disk cache ，这两个表示强制缓存成功。</p>
+<table>
+<thead>
+<tr>
+<th>200</th>
+<th>描述</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>from memory</td>
+<td>使用内存中的缓存</td>
+<td>具有 <strong>快速读取</strong> (内存缓存会将编译解析后的文件，直接存入该进程的内存中)和 <strong>实效性</strong> (进程关闭会清空对应内存)的特点，js 和图片等文件解析执行后直接存入内存缓存中，刷新页面时只需直接从内存缓存中读取</td>
+</tr>
+<tr>
+<td>from disk cache</td>
+<td>使用硬盘中的缓存</td>
+<td>css 文件则会存入硬盘文件中，每次渲染页面都需要从硬盘读取缓存</td>
+</tr>
+</tbody>
+</table>
+<h3 id="协商缓存阶段"><a href="#协商缓存阶段" class="headerlink" title="协商缓存阶段"></a>协商缓存阶段</h3><h4 id="协商缓存过程"><a href="#协商缓存过程" class="headerlink" title="协商缓存过程"></a>协商缓存过程</h4><p>当强制缓存未命中(缓存过期)，浏览器携带缓存标识继续向服务器发起请求，服务器根据缓存标识决定是否使用缓存，这就是 <strong>协商缓存</strong>。<br>这个过程有下面两种情况：</p>
+<ol>
+<li>命中协商缓存，304<br><img src="/images/browser-cache/browser-cache4.png" alt="images"></li>
+<li>未命中协商缓存，200<br><img src="/images/browser-cache/browser-cache5.png" alt="images"></li>
+</ol>
+<h4 id="协商缓存规则"><a href="#协商缓存规则" class="headerlink" title="协商缓存规则"></a>协商缓存规则</h4><p>控制协商缓存的字段有 Last-Modified/If-Modified-Since 和 Etag/If-None-Match, 其中 Etag/If-None-Match 的优先级比 Last-Modified/If-Modified-Since 高</p>
+<h4 id="Last-Modified-If-Modified-Since"><a href="#Last-Modified-If-Modified-Since" class="headerlink" title="Last-Modified/If-Modified-Since"></a>Last-Modified/If-Modified-Since</h4><ul>
+<li>Last-Modified 是服务器响应请求时，返回该资源文件在服务器最后被修改的时间</li>
+<li>If-Modified-Since 是客户端再次发起该请求时，携带上次请求返回的 Last-Modified 值</li>
+</ul>
+<p>服务器收到请求后, 拿 If-Modified-Since 字段的值与资源的 Last-Modified 值进行比较, 若相同, 则命中协商缓存, 返回304响应</p>
+<h4 id="Etag-If-None-Match"><a href="#Etag-If-None-Match" class="headerlink" title="Etag/If-None-Match"></a>Etag/If-None-Match</h4><ul>
+<li>Etag 是服务器响应请求时，返回当前资源文件的一个唯一标识（服务器生成）</li>
+<li>If-None-Match 是客户端再次发起请求时，携带上次请求返回的唯一标识 Etag 值</li>
+</ul>
+<p>服务器收到请求后, 拿 If-None-Match 字段的值与资源的 ETag 值进行比较, 若相同, 则命中协商缓存, 返回304响应</p>
+<h4 id="Etag-解决-Last-Modified-无法解决的一些问题"><a href="#Etag-解决-Last-Modified-无法解决的一些问题" class="headerlink" title="Etag 解决 Last-Modified 无法解决的一些问题"></a>Etag 解决 Last-Modified 无法解决的一些问题</h4><ul>
+<li>一些文件周期性更改，但是内容不变，只改变修改时间</li>
+<li>某些文件修改非常频繁，比如在秒以下的时间内进行修改，(比方说 1s 内修改了 N 次)，If-Modified-Since 能检查到的粒度是 s 级的，这种修改无法判断(或者说 UNIX 记录 MTIME 只能精确到秒)</li>
+<li>某些服务器不能精确的得到文件的最后修改时间</li>
+</ul>
+<h3 id="其他说明"><a href="#其他说明" class="headerlink" title="其他说明"></a>其他说明</h3><ul>
+<li>Content-Length: 尽管并没有在缓存中明确涉及，Content-Length头部在设置缓存策略时很重要。某些软件如果不提前获知内容的大小以留出足够空间，则会拒绝缓存该内容。</li>
+<li>Vary: 缓存系统通常使用请求的主机和路径作为存储该资源的键。当判断一个请求是否是请求同样内容是，Vary 头部可以被用来提醒缓存系统需要注意另一个附加头部。它通常被用来告诉缓存系统同样注意 Accept-Encoding 头部，以便缓存系统能够区分压缩和未压缩的内容。</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>一图胜千言，在实际开发中，遇到缓存问题可以按下面的过程去思考问题。<br><img src="/images/browser-cache/browser-cache.png" alt="images"></p>
+<p>参考文章：</p>
+<blockquote>
+<p><a href="http://louiszhai.github.io/2017/04/07/http-cache/" target="_blank" rel="noopener">浏览器缓存机制剖析</a><br><a href="https://heyingye.github.io/2018/04/16/%E5%BD%BB%E5%BA%95%E7%90%86%E8%A7%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6/" target="_blank" rel="noopener">彻底理解浏览器的缓存机制</a><br><a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html" target="_blank" rel="noopener">HTTP/1.1: Header Field Definitions</a><br><a href="http://www.cnblogs.com/vajoy/p/5341664.html" target="_blank" rel="noopener">浅谈浏览器http的缓存机制</a></p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>请我喝一杯</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="hhking 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="hhking 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    hhking
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://blog.hhking.cn/2018/08/10/browser-cache/" title="浏览器的缓存机制">https://blog.hhking.cn/2018/08/10/browser-cache/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+            <a href="/tags/浏览器缓存/" rel="tag"># 浏览器缓存</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/12/webpack-guide/" rel="next" title="webpack 2 配置指南">
+                <i class="fa fa-chevron-left"></i> webpack 2 配置指南
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/15/extensions-for-vsc/" rel="prev" title="前端 vscode 插件推荐">
+                前端 vscode 插件推荐 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div id="gitalk-container"></div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="hhking" />
+            
+              <p class="site-author-name" itemprop="name">hhking</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/hhking" target="_blank" title="GitHub" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://xuyuwas.github.io/" title="XuYuwas" target="_blank">XuYuwas</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://weigrand.com/" title="2到正无穷" target="_blank">2到正无穷</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#缓存的作用"><span class="nav-number">1.</span> <span class="nav-text">缓存的作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缓存过程"><span class="nav-number">2.</span> <span class="nav-text">缓存过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#强制缓存阶段-本地缓存"><span class="nav-number">2.1.</span> <span class="nav-text">强制缓存阶段(本地缓存)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#强制缓存过程"><span class="nav-number">2.1.1.</span> <span class="nav-text">强制缓存过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#强制缓存规则"><span class="nav-number">2.1.2.</span> <span class="nav-text">强制缓存规则</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Cache-Control"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">Cache-Control</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Pragma"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">Pragma</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Expires"><span class="nav-number">2.1.2.3.</span> <span class="nav-text">Expires</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#启发式缓存"><span class="nav-number">2.1.2.4.</span> <span class="nav-text">启发式缓存</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#from-memory-cache-from-disk-cache"><span class="nav-number">2.1.2.5.</span> <span class="nav-text">from memory cache/from disk cache</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#协商缓存阶段"><span class="nav-number">2.2.</span> <span class="nav-text">协商缓存阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#协商缓存过程"><span class="nav-number">2.2.1.</span> <span class="nav-text">协商缓存过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#协商缓存规则"><span class="nav-number">2.2.2.</span> <span class="nav-text">协商缓存规则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Last-Modified-If-Modified-Since"><span class="nav-number">2.2.3.</span> <span class="nav-text">Last-Modified/If-Modified-Since</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Etag-If-None-Match"><span class="nav-number">2.2.4.</span> <span class="nav-text">Etag/If-None-Match</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Etag-解决-Last-Modified-无法解决的一些问题"><span class="nav-number">2.2.5.</span> <span class="nav-text">Etag 解决 Last-Modified 无法解决的一些问题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他说明"><span class="nav-number">2.3.</span> <span class="nav-text">其他说明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hhking</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io" rel="external nofollow">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next" rel="external nofollow">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script src="/js/src/md5.min.js"></script>
+
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: 'b0a40dabf23e7a07140f',
+      clientSecret: 'b2279465e24b03c105ae5621e101305dc01a1573',
+      repo: 'hhking.github.io',
+      owner: 'hhking',
+      admin: ['hhking'],
+      id: md5(location.pathname),
+      labels: ['gitalk'],
+      perPage: 10,
+      pagerDirection: 'last',
+      createIssueManually: false,
+      distractionFreeMode: true
+    })
+
+    gitalk.render('gitalk-container')
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("xbh9ALj1p4Tty1EOONwwD4NU-gzGzoHsz", "8yJBzSbGA2fQdbVC0Oa5LXsH");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
