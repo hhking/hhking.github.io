@@ -3,7 +3,7 @@ title: "[译] 鸽子传信解释 HTTPS"
 date: 2018-08-25 20:31:26
 categories: ["翻译"]
 tags: ["HTTPS", "对称加密", "非对称加密"]
-issue: -1
+issue: 26
 ---
 
 ![images](https://cdn-images-1.medium.com/max/1600/1*vHF6NNdZX9ziiW_uRYzvAA.png)
