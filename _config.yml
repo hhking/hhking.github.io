@@ -104,7 +104,7 @@ fee:
 deploy:
   - type: git
     # repo: git@github.com:hhking/hhking.github.io.git
-    repo: https://github_token@github.com:hhking/hhking.github.io.git
+    repo: https://gh_token@github.com/hhking/hhking.github.io.git
     branch: master
   # 改成使用 travis-ci
   # - type: git
