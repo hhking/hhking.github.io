@@ -1,6 +1,6 @@
 ---
 title: "[译] axios 内部设计分析"
-issue: -1
+issue: 27
 date: 2018-09-04 20:06:10
 categories: [翻译]
 tags: ["前端", "Ajax", "源码分析"]
