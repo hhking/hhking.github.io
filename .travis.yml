@@ -15,7 +15,6 @@ branches:
     - hexo 
 
 before_install:
-  - sudo apt-get install libpng16-dev
   - npm install -g hexo-cli
 
 # Start: Build Lifecycle
