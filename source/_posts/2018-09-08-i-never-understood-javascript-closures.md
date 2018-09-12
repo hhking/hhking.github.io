@@ -1,6 +1,6 @@
 ---
 title: "[译] 我从没理解过 JavaScript 闭包"
-issue: -1
+issue: 28
 date: 2018-09-08 21:59:11
 categories: [翻译]
 tags: ["前端", "JavaScript", "闭包"]
