@@ -99,7 +99,7 @@ fee:
   content_limit: 140
   content_limit_delim: ' '
 
-all_minifier: true
+all_minifier: false
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
