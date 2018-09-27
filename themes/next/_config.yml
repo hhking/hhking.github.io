@@ -364,7 +364,7 @@ han: false
 
 # Disqus
 disqus:
-  enable: true
+  enable: false
   shortname: blog-hhking
   count: true
 
@@ -395,7 +395,7 @@ valine:
 
 # gitalk
 gitalk:
-  enable: false
+  enable: true
   clientID: b0a40dabf23e7a07140f
   clientSecret: b2279465e24b03c105ae5621e101305dc01a1573
   repo: hhking.github.io

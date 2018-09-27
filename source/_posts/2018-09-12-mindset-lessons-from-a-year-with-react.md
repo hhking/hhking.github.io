@@ -1,6 +1,6 @@
 ---
 title: "[译] 使用 React 一年后，我学到的最重要经验"
-issue: -1
+issue: 29
 date: 2018-09-12 20:27:23
 categories: [翻译]
 tags: ["前端", "JavaScript", "React", "经验分享"]
