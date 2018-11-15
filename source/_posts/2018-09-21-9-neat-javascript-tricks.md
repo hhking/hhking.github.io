@@ -1,6 +1,6 @@
 ---
 title: "[译] 5 分钟学习一些优雅的 JavaScript 技巧"
-issue: -1
+issue: 30
 date: 2018-09-21 17:49:44
 categories: [翻译]
 tags: ["前端", "JavaScript", "经验分享"]

@@ -1,6 +1,6 @@
 ---
 title: "[译] 简单 5 步，理解 JWT"
-issue: -1
+issue: 34
 date: 2018-10-01 20:03:05
 categories: [翻译]
 tags: ["前端", "JSON Web Tokens", "JWT"]

@@ -1,6 +1,6 @@
 ---
 title: "[译]JavaScript 终极指南之执行上下文、变量提升、作用域和闭包"
-issue: -1
+issue: 35
 date: 2018-10-24 23:18:37
 categories: [翻译]
 tags: ["JavaScript", "执行上下文", "Execution Contexts", "变量提升", "Hoisting", "作用域", "Scopes", "闭包", "Closures"]

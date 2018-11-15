@@ -1,6 +1,6 @@
 ---
 title: React 高阶组件其实很简单
-issue: -1
+issue: 32
 date: 2018-09-28 19:23:34
 categories: ["React"]
 tags: ["React", "高阶组件", "High-Order Components", "前端"]

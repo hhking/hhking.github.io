@@ -1,4 +1,5 @@
-title: "从Wordpress迁移到Hexo"
+---
+title: "从 Wordpress 迁移到 Hexo"
 date: 2015-03-23 16:36:57
 categories: 浮生若梦
 tags: [博客,文章]

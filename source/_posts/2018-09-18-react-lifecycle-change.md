@@ -1,6 +1,6 @@
 ---
 title: "重新认识 React 生命周期"
-issue: -1
+issue: 31
 date: 2018-09-18 19:48:51
 categories: ["关于前端"]
 tags: ["React", "生命周期"]
