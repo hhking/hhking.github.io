@@ -252,5 +252,5 @@ cat /proc/swaps
 > 参考资料：
 >
 > [官方教程](https://about.gitlab.com/install/)
-> [阿里云安装Gitlab](]https://juejin.im/entry/5a682735518825734979148a)
+> [CentOS 初体验十四：阿里云安装Gitlab](https://blog.csdn.net/zhaoyanjun6/article/details/79144175)
 > [云服务器 ECS Linux SWAP 配置概要说明](https://help.aliyun.com/knowledge_detail/42534.html)
