@@ -1,6 +1,6 @@
 ---
 title: "阿里云 GitLab 折腾笔记"
-issue: -1
+issue: 36
 date: 2018-11-24 23:09:44
 categories: ["GitLab"]
 tags: ["阿里云", "CentOS 7", "GitLab"]
