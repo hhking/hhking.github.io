@@ -1,6 +1,6 @@
 ---
 title: "[译]JavaScript 如何复制对象"
-issue: -1
+issue: 39
 date: 2018-12-11 19:14:13
 categories: ["翻译"]
 tags: ["复制对象", "浅复制", "深复制"]
