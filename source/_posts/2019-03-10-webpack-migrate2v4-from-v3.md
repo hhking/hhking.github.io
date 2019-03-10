@@ -124,6 +124,6 @@ webpack4 跑起来后，整体的速度已经是提升一大截了，单独打�
 
 这次升级虽然费了不少功夫，踩了不少坑，但也收获不少经验和一些新的思路。同时，一些问题，也暴露出团队项目上的一些问题。
 
-升级 webpack4 后，速度大幅度提升，整个团队的开发效率可以说将近 **提升 70% * 团队** 吧。但是还可以继续深入优化，还有不少的提升空间。可以使用 [speed-measure-webpack-plugin](https://github.com/stephencookdev/speed-measure-webpack-plugin) 来检测webpack打包过程中各个部分所花费的时间，再根据分析来做优化。
+升级 webpack4 后，速度大幅度提升，整个团队的开发效率可以说将近 **提升 70% * 团队** 吧。但是还可以继续深入优化，还有不少的提升空间。可以使用 [speed-measure-webpack-plugin](https://github.com/stephencookdev/speed-measure-webpack-plugin) 来检测webpack打包过程中各个部分所花费的时间，再根据分析来做优化。还可以考虑 `babel` 升级到 v7 和开发环境的 `node` 层升级优化。
 
-还有 `babel` 和开发环境的` node` 层可以升级优化。
+告辞！
