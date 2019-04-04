@@ -7,14 +7,14 @@ tags: ["Babel"]
 ---
 
 ## 缘起
-最近在看项目的升级和优化，项目用的是 babel 6，踩了一下升级到 babel 7 的坑。
+最近在看项目的升级和优化，项目用的是 Babel 6，踩了一下升级到 Babel 7 的坑。
 
 <!-- more -->
 
 ## @babel/preset-env
 [@babel/preset-env](https://babeljs.io/docs/en/babel-preset-env) 根据指定的执行环境提供语法装换，也提供配置 polyfill。
 
-> `babel 7` 已经弃用年份 `preset`: `babel-preset-es2015, babel-preset-es2016, babel-preset-es2017, babel-preset-latest`. 直接使用一个 `env` 搞定。
+> `Babel 7` 已经弃用年份 `preset`: `babel-preset-es2015, babel-preset-es2016, babel-preset-es2017, babel-preset-latest`. 直接使用一个 `env` 搞定。
 
 所以我们需要指定执行环境 Browserslist， Browserslist 的配置有几种方式，并按下面的优先级使用：
 1. `@babel/preset-env` 里的 `targets`
@@ -191,9 +191,17 @@ var Test = function Test() {
 可以发现，helpers 是通过 `require` 引入的，这样就不会存在代码重复的问题了。
 
 ## 拾遗
-`babel v7` 废弃了 `stage-x`，如果需要用到一些特性，需要自己安装对应的 plugin，然后再配置中配置 plugin。
+`Babel 7` 废弃了 `stage-x`，如果需要用到一些特性，需要自己安装对应的 plugin，然后再配置中配置 plugin。
 
 `stage-x` 原本是对应 ECMAScript 提案的不同阶段，每个阶段有不同的特性，但是提案一直在变，这些特性可能更进一步，也可能废弃。`state-x` 是否应该保持和不断更新的提案一致？怎么处理都无法适应变化，所以直接使用 `stage-x` 对后期的维护造成困惑和风险。
+
+`Babel 7` 还有个配置文件查找的问题，升级后可能会出现 `.babelrc` 配置无效的情况，需要根据目录结构和规则调整。简单的说：
+- Babel 7 增加了 `root` 目录的概念，默认是 cwd 目录
+- Babel 分成项目级配置文件(如：`.babel.config.js`)和文件级配置文件(如：`.babelrc`)
+- 项目级目录是默认是在 `root` 目录查找，可以配置 `root` 或者 `rootMode` 来更改查找方式；也可以配置 `configFile` 来指定文件或者关闭项目级配置
+- 文件级配置文件 `.babelrc` 会根据 `babelrcRoots` 配置（默认值为 `root`）的目录查找，且只作用于当前编译目录的 `package.json`
+
+> 更详细的可以直接看文档的解释说明 [Config Files](https://babeljs.io/docs/en/config-files#project-wide-configuration)
 
 ## 总结
 Babel 7 的配置方案：
@@ -203,6 +211,6 @@ Babel 7 的配置方案：
 
 这样就实现了按需引入 `polyfill`，看起来也是相当完美。
 
-但是想想还是存在问题的，比如：babel 编译通常会排除 node_modules，所以 `"useBuiltIns": "usage"` 存在风险，可能无法为依赖包添加必要的 `polyfill`。云谦在博客 [Polyfill 方案的过去、现在和未来](https://github.com/sorrycc/blog/issues/80) 也提到一些问题，还有一些想法和展望，感觉写得挺好的。
+但是想想还是存在问题的，比如：Babel 编译通常会排除 node_modules，所以 `"useBuiltIns": "usage"` 存在风险，可能无法为依赖包添加必要的 `polyfill`。云谦在博客 [Polyfill 方案的过去、现在和未来](https://github.com/sorrycc/blog/issues/80) 也提到一些问题，还有一些想法和展望，感觉写得挺好的。
 
-> 关于 babel 编译通常会排除 node_modules 的做法，通用的约定是 node_modules 下的包在发布时打包成 es5。但是也难保证全部都遵守约定，这就存在一定的风险。但是如果 babel 处理 node_modules，编译速度慢不说，babel 6 编译已编译过的代码也是存在问题的，据说这个问题在 babel 7 解决了，maybe! 告辞！👋
+> 关于 Babel 编译通常会排除 node_modules 的做法，通用的约定是 node_modules 下的包在发布时打包成 es5。但是也难保证全部都遵守约定，这就存在一定的风险。但是如果 Babel 处理 node_modules，编译速度慢不说，Babel 6 编译已编译过的代码也是存在问题的，据说这个问题在 Babel 7 解决了，maybe! 告辞！👋
