@@ -6,8 +6,6 @@ categories: "关于前端"
 tags: ["HTML5", "前端", "图片上传", "图片压缩", "图片预览"]
 ---
 
-![](https://ws2.sinaimg.cn/large/006tNbRwgy1fxowp3tejnj31400u0doq.jpg)
-
 ## 前言
 
 前端做图片上传时，经常会遇到图片压缩、图片预览等需求。而这个过程中，会遇到一个个的坑。下面就来看一看 HTML5 实现图片上传的整个过程。
@@ -38,7 +36,7 @@ tags: ["HTML5", "前端", "图片上传", "图片压缩", "图片预览"]
 
 通过监听 input 的 `change` 事件，获取 `FileList`类数组对象（event.target.files）。`FileList` 对象的成员就是 `File`对象，包含的属性如图：
 
-![](https://ws2.sinaimg.cn/large/006tNbRwgy1fxnsm6il0yj30ug0bgq3r.jpg)
+![](/images/h5-img-upload/h5-img-upload1.jpg)
 
 
 
@@ -227,7 +225,7 @@ void ctx.rotate(angle);
 
 以 `orientation`等于 6 时为例，也就是图片逆时针旋转了 90°，要把图片校正方向，就要画布顺时针旋转 90° : `rotate((90 * Math.PI) / 180)`
 
-![](https://ws3.sinaimg.cn/large/006tNbRwgy1fxoosi62rij311c0humxd.jpg)
+![](/images/h5-img-upload/h5-img-upload2.jpg)
 
 画布旋转之后，`drawImage()`根据画布的位置进行调整，如上图所示:
 

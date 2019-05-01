@@ -6,8 +6,6 @@ categories: ["GitLab"]
 tags: ["阿里云", "CentOS 7", "GitLab"]
 ---
 
-![](https://ws4.sinaimg.cn/large/006tNbRwgy1fxjk8rcfi8j30m80et3yv.jpg)
-
 想自己搭建一个 git 服务来玩一玩，正好有个阿里云，虽然配置很渣，但是也想着随便搞一搞。
 
 于是从[官方教程](https://about.gitlab.com/install/)开始，遇到一些坑，查看一些资料，解决一些问题，有了下面的笔记。
@@ -16,7 +14,7 @@ tags: ["阿里云", "CentOS 7", "GitLab"]
 
 选择对应的版本。我的阿里云装的是 `CentOS 7`,所以选择 `CentOS 7`的版本。
 
-![](https://ws1.sinaimg.cn/large/006tNbRwly1fxi7otepbij31au0u0wga.jpg)
+![](/images/aliyun-gitlab-install/aliyun-gitlab-install1.jpg)
 
 > 通过下面的命令可以查看当前属于什么系统
 >
@@ -54,7 +52,7 @@ systemctl start firewalld.service
 
 然后重新执行命令就会提示 `success`
 
-![](https://ws2.sinaimg.cn/large/006tNbRwly1fxi7ymcyd8j30ta06kwf4.jpg)
+![](/images/aliyun-gitlab-install/aliyun-gitlab-install2.jpg)
 
 
 
@@ -70,7 +68,7 @@ sudo systemctl start postfix
 
 这里遇到一个报错
 
-![](https://ws1.sinaimg.cn/large/006tNbRwly1fxi8exgwl5j31x202gaaa.jpg)
+![](/images/aliyun-gitlab-install/aliyun-gitlab-install3.jpg)
 
 解决办法是修改 `/etc/postfix/main.cf`文件中的下面信息
 
@@ -105,7 +103,7 @@ sudo EXTERNAL_URL="http://gitlab.example.com" yum install -y gitlab-ee
 
 我这里设置成 IP 加 8888 端口，这需要在阿里云上配置安全组规则，出入方向都要配置对应端口。例如：
 
-![](https://ws4.sinaimg.cn/large/006tNbRwgy1fxi989lj7hj31li07ogly.jpg)
+![](/images/aliyun-gitlab-install/aliyun-gitlab-install4.jpg)
 
 然后设置防火墙：
 
@@ -142,7 +140,7 @@ gitlab-ctl reconfigure
 
 最后来个登录成功的图：
 
-![](https://ws2.sinaimg.cn/large/006tNbRwgy1fxjjj5iuv3j31o70u0tb3.jpg)
+![](/images/aliyun-gitlab-install/aliyun-gitlab-install5.jpg)
 
 
 
@@ -227,7 +225,7 @@ cat /proc/swaps
 
    通过上面命令看到 swappiness 值为 0，需要在物理内存使用完毕后才会使用 SWAP 分区
 
-   ![](https://ws2.sinaimg.cn/large/006tNbRwgy1fxjjaichhvj30ka024t8m.jpg)
+   ![](/images/aliyun-gitlab-install/aliyun-gitlab-install6.jpg)
 
     我们配置为空闲内存少于 10% 时才使用 SWAP 分区
 

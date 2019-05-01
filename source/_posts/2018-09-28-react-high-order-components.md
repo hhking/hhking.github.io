@@ -6,7 +6,6 @@ categories: ["React"]
 tags: ["React", "高阶组件", "High-Order Components", "前端"]
 ---
 
-![](https://ws3.sinaimg.cn/large/006tNc79gy1fvphb9ijkij31e00goq3c.jpg)
 ## 前言
 高阶组件 High-Order Components，不属于 React 的 API，而是 React 的一种运用技巧，或者说设计模式。所以，不使用高阶组件，也是可以实现功能，但是掌握高阶组件，可以提高代码的灵活性和复用性，实现起来更加优雅。当然，学会 React 的高级运用，也可以让你更加深入的理解 React。
 
@@ -131,7 +130,7 @@ export default InputHOC(Input);
 从上面的例子可以看出，在高阶组件里，你可以操作 `props`、`state`，甚至修改 `render` 方法里的渲染内容。
 
 高阶组件的模式和数据流实际如图：
-![](https://ws4.sinaimg.cn/large/006tNc79gy1fvpej71rd7j30s20kqt8u.jpg)
+![](/images/react-hoc/react-hoc1.jpg)
 
 ## 一些注意点
 ### 参数
@@ -149,7 +148,7 @@ export default (WrappedComponent, data) => {
 
 ### 命名
 高阶组件的创建的容器组件的名称在  React Developer Tools 中看起来和普通组件一样，看不出是不是使用了高阶组件。
-![](https://ws1.sinaimg.cn/large/006tNc79gy1fvpek8jnhcj30qw060gll.jpg)
+![](/images/react-hoc/react-hoc2.jpg)
 
 为了方便调试，一般约定用容器组件类名包裹原始组件来命名容器组件：
 ```jsx
@@ -190,7 +189,7 @@ export default (WrappedComponent, validate) => {
 
 ```
 结果如下，这样就可以直观的看出是使用了高阶组件：
-![](https://ws3.sinaimg.cn/large/006tNc79gy1fvpeko9eu6j30w8068mx6.jpg)
+![](/images/react-hoc/react-hoc3.jpg)
 
 
 ### 多层高阶组件
@@ -199,7 +198,7 @@ export default (WrappedComponent, validate) => {
 Input = InputHOC(Input);
 Input = InputHHOC(Input);
 ```
-![](https://ws4.sinaimg.cn/large/006tNc79gy1fvpejvu0mnj30te0nqq34.jpg)
+![](/images/react-hoc/react-hoc4.jpg)
 
 
 ## 总结

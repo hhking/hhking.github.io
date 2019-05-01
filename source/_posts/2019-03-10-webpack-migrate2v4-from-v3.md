@@ -6,8 +6,6 @@ categories:
 tags: ["webpack"]
 ---
 
-![](https://ws3.sinaimg.cn/large/006tKfTcgy1g0y1fb94kzj30zk0g6410.jpg)
-
 ## 前言
 
 号称 “**零配置**”、“**最高可提升98%的速度**” 的 webpack4 已经出来一段时间了，而且 webpack5 也已经在路上了。再不体验一下 webpack4 就老了！目前项目使用的还是 webpack3，打包速度确实是锻炼人的耐心，这次趁着有点时间，决心优化一下项目，尝试从 webpack 升级开始。期间断断续续也遇到不少问题，在这里对大致的过程做个记录。
