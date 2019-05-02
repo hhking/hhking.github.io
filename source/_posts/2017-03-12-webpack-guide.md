@@ -2,7 +2,7 @@
 title: webpack 2 配置指南
 date: 2017-03-12 17:55:05
 categories: "关于前端"
-tags: [webpack, react]
+tags: [webpack, React]
 ---
 
   ![images](/images/webpack.png)
