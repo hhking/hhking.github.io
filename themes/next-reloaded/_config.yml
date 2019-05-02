@@ -94,13 +94,13 @@ footer:
 creative_commons:
   license: by-nc-sa
   sidebar: false
-  post: false
+  post: true
   language:
 
 # `Follow me on GitHub` banner in the top-right corner.
 github_banner:
-  enable: false
-  permalink: https://github.com/yourname
+  enable: true
+  permalink: https://github.com/hhking
   title: Follow me on GitHub
 
 
@@ -364,7 +364,7 @@ reward_settings:
   # You can show or hide reward in a specific article throuth `reward: true | false` in Front Matter.
   enable: true
   animation: false
-  comment: Donate comment here
+  comment: 您的支持将鼓励我继续创作！
 
 reward:
   wechatpay: /images/wechatpay.jpg
