@@ -9,7 +9,7 @@ description: 前端，技术，博客
 signature: Stay hungry, Stay foolish
 keywords:
 author: hhking
-language: zh-Hans
+language: zh-CN
 timezone: Asia/Shanghai
 
 # URL
@@ -74,7 +74,13 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next
+theme: next-reloaded
+
+symbols_count_time:
+  symbols: true
+  time: true
+  total_symbols: true
+  total_time: true
 
 #社交链接，在侧栏中显示
 social:
