@@ -1,7 +1,9 @@
 ---
 title: 移动端重构笔记
 date: 2017-03-04 16:24:27
-categories: "关于前端"
+categories: 
+    - "前端"
+    - "CSS"
 tags: [移动端, 重构]
 ---
 

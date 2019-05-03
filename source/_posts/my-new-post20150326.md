@@ -1,7 +1,7 @@
 ---
 title: "jQuery实现输入框标签的自动添加和删除等操作"
 date: 2015-03-26 12:51:44
-categories: "关于前端"
+categories: "前端"
 tags: [jQuery,tags,前端]
 ---
 **记录一下这两天写的。**

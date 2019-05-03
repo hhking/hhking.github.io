@@ -2,7 +2,9 @@
 title: "Babel 7 升级实践"
 issue: 42
 date: 2019-04-02 12:14:49
-categories: "Babel"
+categories:
+  - 前端
+  - Babel
 tags: ["Babel"]
 ---
 

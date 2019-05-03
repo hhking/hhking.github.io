@@ -1,7 +1,9 @@
 ---
 title: React开发技术栈
 date: 2017-02-26 20:26:12
-categories: "关于前端"
+categories: 
+  - "前端"
+  - "React"
 tags: [React]
 ---
 

@@ -2,7 +2,7 @@
 title: "HTML5 图片上传解决方案"
 issue: 37
 date: 2018-11-29 14:18:59
-categories: "关于前端"
+categories: "前端"
 tags: ["HTML5", "前端", "图片上传", "图片压缩", "图片预览"]
 ---
 

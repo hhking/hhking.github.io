@@ -1,7 +1,9 @@
 ---
 title: webpack 2 配置指南
 date: 2017-03-12 17:55:05
-categories: "关于前端"
+categories: 
+  - "前端"
+  - "webpack"
 tags: [webpack, React]
 ---
 

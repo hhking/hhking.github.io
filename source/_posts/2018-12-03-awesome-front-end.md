@@ -2,7 +2,7 @@
 title: "Awesome Font-end"
 issue: 38
 date: 2018-12-03 21:44:47
-categories: ["关于前端"]
+categories: ["前端"]
 tags: ["Front-end", "awesome", "前端"]
 top: 10
 ---

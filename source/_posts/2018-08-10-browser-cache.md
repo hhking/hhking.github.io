@@ -1,7 +1,7 @@
 ---
 title: 浏览器的缓存机制
 date: 2018-08-10 14:36:08
-categories: "关于前端"
+categories: "前端"
 tags: [前端,浏览器缓存]
 issue: 19
 ---

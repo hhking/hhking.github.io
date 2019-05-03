@@ -4,10 +4,10 @@
 
 # Site
 title: HK Talk
-subtitle: 关于前端，关于生活
+subtitle: 关于技术，关于生活
 description: 前端，技术，博客
 signature: Stay hungry, Stay foolish
-keywords:
+keywords: 前端,js,jquery,javascript,html5,开发,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验
 author: hhking
 language: zh-CN
 timezone: Asia/Shanghai
@@ -74,7 +74,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next-reloaded
+theme: next
 
 symbols_count_time:
   symbols: true

@@ -1,7 +1,9 @@
 ---
 title: npm install慢或者无响应解决方案
 date: 2017-02-19 16:41:34
-categories: "关于前端"
+categories: 
+  - "前端"
+  - "npm"
 tags: [Node, npm]
 issue: 21
 ---
