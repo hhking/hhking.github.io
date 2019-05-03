@@ -29,6 +29,9 @@
     {% else %}
       language: '{{ theme.gitalk.language }}',
     {% endif %}
+    {% if page.issue %}
+      number: {{ page.issue }},
+    {% endif %}
     distractionFreeMode: '{{ theme.gitalk.distraction_free_mode }}'
   });
   gitalk.render('gitalk-container');
