@@ -9,7 +9,7 @@ tags: ["前端", "JavaScript", "经验分享"]
 > 原文：[Learn these neat JavaScript tricks in less than 5 minutes](https://medium.freecodecamp.org/9-neat-javascript-tricks-e2742f2735c3)
 作者：Alcides Queiroz
 
-![](https://ws4.sinaimg.cn/large/006tNbRwgy1fvhb7v14n0j31hc0dwmx5.jpg)
+![](https://i.loli.net/2019/05/26/5ce9e86f1eff798032.png)
 **5 分钟学习一些优雅的 JavaScript 技巧 —— 专业的省时技巧**
 
 <!-- more -->
