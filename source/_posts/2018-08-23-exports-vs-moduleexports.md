@@ -5,7 +5,7 @@ categories: "Node.js"
 tags: [前端,Node]
 issue: 17
 ---
-![](https://ws1.sinaimg.cn/large/006tNbRwgy1fujuxtngyxj31kw11xu10.jpg)
+![](https://i.loli.net/2019/05/26/5cea068ec8dd423680.png)
 ## 前言
 Node.js 模块系统是采用 CommonJS 模块规范的。每个文件视为一个独立的模块。使用 require 导入模块，使用 module.exports 和 exports 导出模块。
 那么 module.exports 和 exports 的区别在哪里呢？
@@ -42,7 +42,7 @@ function require(/* ... */) {
 exports = module.exports = {...}
 ```
 module.exports 是一个对象，exports 是对 module.exports 的引用，即他们指向同一块内存。如图所示：
-![](https://ws2.sinaimg.cn/large/006tNbRwgy1fujmsr1hdfj30jk0e8dgn.jpg)
+![](https://i.loli.net/2019/05/26/5cea06b63670090903.png)
 
 所以如果对 exports （或者 module.exports） 的对象修改，就是对他们共同指向的内存的内容做修改，两者都会影响。
 ```js
@@ -60,7 +60,7 @@ exports = function(x) {console.log(x)};
 exports.obj = 1;
 module.exports = 2;
 ```
-![](https://ws3.sinaimg.cn/large/006tNbRwgy1fujnekk29fj312k0diabx.jpg)
+![](https://i.loli.net/2019/05/26/5cea06cd1490c13258.png)
 
 这时候，我们可以 exports = module.exports 让 exports 重新指向 module.exports
 
