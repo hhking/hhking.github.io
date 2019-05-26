@@ -19,11 +19,11 @@ React 从 v16 开始，像是跨入了新的时代，性能和新的 API 都令�
 
 # 新的生命周期
 先看看两张经典的生命周期的示意图
-![旧的生命周期](https://ws3.sinaimg.cn/large/006tNbRwgy1fvccxme0cjj31kw1ns42n.jpg)
+![旧的生命周期](/images/react-life-cycle/react-life-cycle-old.png)
 <center>旧的生命周期</center>
 <br>
 
-![新的生命周期](https://ws1.sinaimg.cn/large/006tNbRwgy1fvcdp2zaldj31kw0wlgon.jpg)
+![新的生命周期](/images/react-life-cycle/react-life-cycle-new.jpg)
 <center>新的生命周期</center>
 <br>
 
@@ -175,7 +175,7 @@ componentDidMount()
 ```jsx
 UNSAFE_componentWillReceiveProps(nextProps)
 ```
-这个方法在接收新的 props 时触发，即使 props 没有变化也会触发。
+这个方法在接收新的 props 时调用，需要注意的是，如果父组件导致组件重新渲染，即使 props 没有更改，也会调用此方法。
 
 一般用这个方法来判断 props 的前后变化来更新 `state`，如下面的例子：
 
