@@ -9,7 +9,7 @@ tags: ["JavaScript", "执行上下文", "Execution Contexts", "变量提升", "H
 > 原文：[The Ultimate Guide to Execution Contexts, Hoisting, Scopes, and Closures in JavaScript](https://tylermcginnis.com/ultimate-guide-to-execution-contexts-hoisting-scopes-and-closures-in-javascript/)
 > 作者：[Tyler McGinnis](https://twitter.com/tylermcginnis)
 
-![](https://ws1.sinaimg.cn/large/006tNbRwgy1fwh0zvi9tcj30zk0k0tac.jpg)
+![](https://i.loli.net/2019/05/26/5cea077212cb313490.png)
 
 视频：[The Ultimate Guide to Execution Contexts, Hoisting, Scopes, and Closures in JavaScript](https://www.youtube.com/watch?v=Nt-qa_LlUH0)
 
@@ -21,15 +21,15 @@ tags: ["JavaScript", "执行上下文", "Execution Contexts", "变量提升", "H
 
 JavaScript 引擎执行代码时，第一个被创建的执行上下文叫做全局执行上下文（Global Execution Context）。最开始这个执行上下文包含两个东西——一个全局对象和 `this` 变量。`this` 会引用全局对象，在浏览器执行 JavaScript 则全局对象是 `window`，在 Node 环境执行则全局对象是 `global`。
 
-![](https://ws2.sinaimg.cn/large/006tNbRwgy1fwh47egir8j31b40m474s.jpg)
+![](https://i.loli.net/2019/05/26/5cea07aa5677b67067.png)
 
 上图我们可以看到，即使没有任何代码，全局执行上下文还是会包含两个东西—— `window` 和 `this`。这是全局执行上下文的最基本形式。
 
 我们一步一步来，看看当向程序添加代码时会发生什么。我们先添加一些变量。
 
-![](https://ws3.sinaimg.cn/large/006tNbRwgy1fwh4d1ivpsj31is0rudhu.jpg)
+![](https://i.loli.net/2019/05/26/5cea07d962a7729018.png)
 
-![](https://ws3.sinaimg.cn/large/006tNbRwgy1fwh4dajq5dj31is0rutar.jpg)
+![](https://i.loli.net/2019/05/26/5cea07ed8270a22948.png)
 
 你可以看出上面两张图的不同之处吗？关键的是每个执行上下文都有两个独立的阶段——创建（`Creation`）阶段和执行（`Execution`）阶段，每个阶段都有它特有的职责。
 
