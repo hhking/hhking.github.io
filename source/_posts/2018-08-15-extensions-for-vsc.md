@@ -4,7 +4,6 @@ date: 2018-08-15 19:02:35
 categories: "vscode"
 tags: [前端,vscode,插件]
 issue: 12
-top: 9
 ---
 ![images](/images/extensions-for-vsc/coding.jpg)
 ## 前言
