@@ -1,0 +1,103 @@
+
+# html lang
+language: en
+
+# main menu navigation
+menu:
+  Home: /
+  About: /about
+  # Contact: /contact
+  Archives: /archives
+  # Categories: /categories
+
+header-img: /img/home-bg.jpg
+
+sidebar-avatar: /images/avatar.jpg
+sidebar-about-description: 日拱一卒，功不唐捐
+
+RSS: true
+github_username: hhking
+juejin_username: 5712e9f6128fe1006cf35b3f
+
+# Featured Tags
+featured-tags: true                     # whether or not using Feature-Tags
+featured-condition-size: 1              # A tag will be featured if the size of it is more than this condition value
+
+# Progressive Web Apps
+chrome-tab-theme-color: "#000000"
+service-worker: false
+
+# 友链
+friends_title: FRIENDS
+friends:
+  22Infinite: https://www.22infinite.com/
+  Jsonz: https://jsonz1993.github.io/
+  XuYuwas: https://xuyuwas.github.io/
+
+
+# MathJax rendering for layout:page (e.g. post preview)
+page-mathjax: false
+
+# Gitalk
+# Demo: https://gitalk.github.io
+gitalk:
+  enable: true
+  github_id:  hhking # Github repo owner
+  repo:  hhking.github.io
+  client_id:  b0a40dabf23e7a07140f
+  client_secret:  b2279465e24b03c105ae5621e101305dc01a1573
+  admin_user:  hhking # GitHub repo owner and collaborators, only these guys can initialize github issues
+  distraction_free_mode: true # Facebook-like distraction free mode
+  # By default, Gitalk will create a corresponding github issue for your every single page automatically when the logined user is belong to the admin users.
+  # You can create it manually by setting this option to true.
+  create_issue_manually: true
+  # Gitalk's display language depends on user's browser or system environment
+  # If you want everyone visiting your site to see a uniform language, you can set a force language value
+  # Available values: en, es-ES, fr, ru, zh-CN, zh-TW
+  language: zh-CN
+
+# Code Highlight theme
+# Available value:
+#    normal | night | night yilia | night eighties | night blue | night bright
+# https://github.com/chriskempson/tomorrow-theme
+# night yilia - https://github.com/litten/hexo-theme-yilia
+highlight_theme: normal
+
+# Show Views / Visitors of the website / page with busuanzi.
+# Get more information on http://ibruce.info/2015/04/04/busuanzi
+busuanzi_count:
+  enable: true
+  total_visitors: true
+  total_visitors_icon: user
+  total_views: true
+  total_views_icon: eye
+  post_views: false
+  post_views_icon: eye
+
+# Show number of visitors to each article.
+# You can visit https://leancloud.cn to get AppID and AppKey.
+# todo
+# leancloud_visitors:
+#   enable: true
+#   app_id: xbh9ALj1p4Tty1EOONwwD4NU-gzGzoHsz
+#   app_key: 8yJBzSbGA2fQdbVC0Oa5LXsH
+#   # Dependencies: https://github.com/theme-next/hexo-leancloud-counter-security
+#   # If you don't care about security in leancloud counter and just want to use it directly
+#   # (without hexo-leancloud-counter-security plugin), set `security` to `false`.
+#   security: true
+#   betterPerformance: false
+
+# Baidu Analytics ID
+baidu_analytics:
+  tracking_id: 31feca94a9c3375ecc5a2e8d9a00b6a0
+  localhost_ignored: false
+
+# Growingio Analytics ID
+# Copyright 2015-2018 GrowingIO, Inc. More info available at https://www.growingio.com
+#growingio_analytics: #your projectId
+
+# Google Analytics
+google_analytics:
+ tracking_id: UA-126640859-1
+ localhost_ignored: false
+

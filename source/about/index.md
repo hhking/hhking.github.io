@@ -1,7 +1,8 @@
 ---
-title: "About HK"
+title: "About"
 date: 2015-03-23 16:04:14
 issue: 9
+layout: about
 ---
 
 我住在羊城

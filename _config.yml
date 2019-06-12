@@ -5,8 +5,8 @@
 # Site
 title: HK Talk
 subtitle: 关于技术，关于生活
-description: 日拱一卒，功不唐捐
-signature: Stay hungry, Stay foolish
+description: 关于程序与生活 | HK, hhking, Front-End Engineer | 这里是 @hhking 的个人博客，与你一起发现更大的世界。
+signature: 日拱一卒，功不唐捐
 keywords: 前端,js,jquery,javascript,html5,开发,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验
 author: hhking
 language: zh-CN
@@ -74,7 +74,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next
+theme: huxo
 
 # 升级后计数有问题
 # symbols_count_time:

@@ -1,0 +1,77 @@
+<!--
+Credits: this page shamelessly borrowed a lot from:
+https://github.com/kitian616/jekyll-TeXt-theme
+-->
+<!-- Page Header -->
+<!-- {% include intro-header.html type='page' short=true %} -->
+<%
+  const pageData = site.pages.findOne({ title: 'Archive' });
+%>
+<%- include('partials/intro-header.ejs', { include: { type: 'page', short: true, pageData: pageData } })%>
+<!-- Main Content -->
+<div class="container">
+	<div class="row">
+		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+			<!-- Tags (as filter) -->
+			<div id='tag_cloud' class="tags tags-sup js-tags">
+				<a class="tag-button--all" data-encode="">
+					Show All
+					<sup><%= site.posts.length %></sup>
+				</a>
+        <% const _sorted_tags = site.tags.sort('length', -1) %>
+        <% _sorted_tags.forEach(tag => { %>
+          <% const sort = ('0000' + (site.posts.length - tag.length)).substr(-4, 4) %>
+          <a data-sort="<%= sort %>"
+            data-encode="<%= encodeURIComponent(tag.name.trim()) %>"
+            class="tag-button"
+            title="<%= tag.name %>" rel="<%= tag.length %>">
+            <%= tag.name %>
+            <sup><%= tag.length %></sup>
+          </a>
+        <% }) %>
+			</div>
+
+      <!-- Article List -->
+			<div class="mini-post-list js-result d-none">
+      <%
+        const _sorted_list = site.posts.sort('date', -1);
+        let _data = '';
+      %>
+      <% _sorted_list.forEach((post, i) => { %>
+        <%
+          let date = post.date.clone();
+          let _tagsArr = [];
+          const year = date.year();
+
+          post.tags.forEach(tag => {
+            _tagsArr.push(encodeURIComponent(tag.name));
+          });
+        %>
+
+        <% if (year != _data) {%>
+        <% if (i !== 0) { %>
+          </section>
+        <% } %>
+        <section>
+            <span class="fa listing-seperator">
+              <span class="tag-text"><%= year %></span>
+            </span>
+          <% } %>
+          <% _data = year %>
+          <div class="post-preview item" data-tags="<%= _tagsArr.join(',') %>">
+              <a href="<%= url_for(post.path) %>">
+                  <h2 class="post-title">
+                    <%= post.title %>
+                  </h2>
+                  <% if (post.subtitle) { %>
+                  <h3 class="post-subtitle">
+                      <% post.subtitle %>
+                  </h3>
+                  <% } %>
+              </a>
+            <hr>
+          </div>
+      <% }) %>
+		</div>
+	</div>
+</div>

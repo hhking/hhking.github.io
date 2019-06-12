@@ -24,6 +24,7 @@
     "hexo-symbols-count-time": "^0.6.0"
   },
   "devDependencies": {
+    "hexo-renderer-less": "^1.0.0",
     "imagemin-mozjpeg": "^7.0.0"
   }
 }
