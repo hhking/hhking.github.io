@@ -3,6 +3,7 @@ title: "About"
 date: 2015-03-23 16:04:14
 issue: 9
 layout: about
+description: 更吹落，星如雨
 ---
 
 我住在羊城
@@ -15,7 +16,6 @@ layout: about
 
 希望不会轻轻地离开
 
-<br>
 
 Contact
 > Email: huhking@qq.com

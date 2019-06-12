@@ -1,13 +1,15 @@
 ---
 title: "Awesome Font-end"
+subtitle: 前端实用备忘录
 issue: 38
 date: 2018-12-03 21:44:47
 categories: ["前端"]
 tags: ["Front-end", "awesome", "前端"]
 top: 10
+header-img: /images/awesome-front-end.jpg
+header-mask: 0.3
+catalog: false
 ---
-
-![](/images/awesone-front-end.jpg)
 
 前端的发展日新月异，新的技术、新的工具如雨后春笋，不断的冒出来。
 
