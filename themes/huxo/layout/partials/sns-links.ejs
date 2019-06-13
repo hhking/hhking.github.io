@@ -1,40 +1,40 @@
 <!-- @param {Boolean} center -->
 <% if (include.center){ %>
-<ul class="list-inline text-center">
-<% } else { %>
-<ul class="list-inline">
-<% } %>
+  <ul class="list-inline text-center">
+  <% } else { %>
+  <ul class="list-inline">
+  <% } %>
 
-  <% if (theme.RSS){ %>
-  <li>
-    <a href="<%= theme.root + 'atom.xml' %>" title="RSS">
-      <span class="fa-stack fa-lg">
-        <i class="fa fa-circle fa-stack-2x"></i>
-        <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
-      </span>
-    </a>
-  </li>
-  <% } %>
-  <% if (theme.social) { %>
-    <% Object.keys(theme.social).forEach(key => { %>
-      <%
-        let valArray = theme.social[key].split('||');
-        let url = valArray[0];
-        let icon = valArray[1].trim();
-        let word = valArray[2];
-      %>
-      <li>
-        <a href="<%= url %>" target="_blank" title="<%= key + ' -> ' + url %>">
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <% if (word) { %>
-              <i class="fa fa-stack-1x fa-inverse"><%= word %></i>
-            <% } else { %>
-              <i class="fa fa-<%= icon %> fa-stack-1x fa-inverse"></i>
-            <% } %>
-          </span>
-        </a>
-      </li>
-    <% }) %>
-  <% } %>
-</ul>
+    <% if (theme.RSS){ %>
+    <li>
+      <a href="<%= theme.root + 'atom.xml' %>" title="RSS">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
+    </li>
+    <% } %>
+    <% if (theme.social) { %>
+      <% Object.keys(theme.social).forEach(key => { %>
+        <%
+          let valArray = theme.social[key].split('||');
+          let url = valArray[0];
+          let icon = valArray[1].trim();
+          let word = valArray[2];
+        %>
+        <li>
+          <a href="<%= url %>" target="_blank" title="<%= key + ' -> ' + url %>">
+            <span class="fa-stack fa-lg">
+              <i class="fa fa-circle fa-stack-2x"></i>
+              <% if (word) { %>
+                <i class="fa fa-stack-1x fa-inverse"><%= word %></i>
+              <% } else { %>
+                <i class="fa fa-<%= icon %> fa-stack-1x fa-inverse"></i>
+              <% } %>
+            </span>
+          </a>
+        </li>
+      <% }) %>
+    <% } %>
+  </ul>
