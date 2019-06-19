@@ -112,3 +112,25 @@ google_analytics:
  tracking_id: UA-126640859-1
  localhost_ignored: true
 
+# Creative Commons 4.0 International License.
+# See: https://creativecommons.org/share-your-work/licensing-types-examples
+# Available values of license: by | by-nc | by-nc-nd | by-nc-sa | by-nd | by-sa | zero
+# You can set a language value if you prefer a translated version of CC license.
+# CC licenses are available in 39 languages, where you can find the specific and correct abbreviation you need.
+# Valid values of language: deed.zh, deed.fr, deed.de, etc.
+creative_commons:
+  license: by-nc-sa
+  sidebar: false
+  post: true
+  language: deed.zh
+
+# Reward (Donate)
+reward_settings:
+  # If true, reward would be displayed in every article by default.
+  # You can show or hide reward in a specific article throuth `reward: true | false` in Front Matter.
+  enable: true
+  comment: 如果这篇文章对你有帮助，那么不妨？
+
+reward:
+  wechatpay: /images/wechatpay.jpg | 微信
+  alipay: /images/alipay.jpg | 支付宝

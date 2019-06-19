@@ -1,5 +1,5 @@
 # Hexo Theme Huxo
-> 移植的主题 Hux Blog(V1.8), 感谢 Huxpro 设计这样一个完美的主题。同时也感谢 [Kaijun](https://github.com/Kaijun/hexo-theme-huxblog) 提供的参考。
+> 移植的主题 Hux Blog(V1.8), 感谢 [Huxpro](https://github.com/Huxpro/huxpro.github.io) 设计这样一个完美的主题。同时也感谢 [Kaijun](https://github.com/Kaijun/hexo-theme-huxblog) 提供的参考。
 
 ### [Demo &rarr;](https://blog.hhking.cn/)
 
@@ -30,3 +30,5 @@ theme: huxo
 - 增加 gitalk 支持
 - 修改社交链接配置，更自由方便
 - 增加 [不蒜子](https://busuanzi.ibruce.info/) 统计
+- 增加文章版权声明 creativecommons
+- 增加文章赞赏配置功能
