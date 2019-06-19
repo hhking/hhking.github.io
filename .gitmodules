@@ -1,0 +1,3 @@
+[submodule "theme/huxo"]
+	path = theme/huxo
+	url = git@github.com:hhking/hexo-theme-huxo.git
