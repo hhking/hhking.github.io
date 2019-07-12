@@ -26,6 +26,8 @@ combineReducers,
 applyMiddleware
 ```
 
+先来看看 Redux 的数据流向图，流程图也能看出一点这些 api 的作用。
+![](/images/redux-flow.png)
 
 ## createStore
 createStore 是生成 store 的函数，返回 store 对象，`dispatch`, `subscribe`, `getState`, `replaceReducer` 都是在这里实现的
