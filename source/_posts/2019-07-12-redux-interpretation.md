@@ -157,7 +157,7 @@ function bindActionCreator(actionCreator, dispatch) {
 
 ### combineReducers
 `combineReducers` 这个函数的作用是，把一个包含各个 reducer 函数的对象，合并成一个 reducer 函数。
-这部分代码也不复杂，出去一些错误检查之类的，就是对 reducer 就行处理合并，执行返回的函数，才是执行真正的所有的 reducer 逻辑
+这部分代码也不复杂，除去一些错误检查之类的，就是对 reducer 就行处理合并，执行返回的函数，才是执行真正的所有的 reducer 逻辑
 
 ```js
 //combineReducers
