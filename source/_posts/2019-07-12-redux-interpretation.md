@@ -9,6 +9,7 @@ categories:
 tags: ["Redux"]
 ---
 
+> 本篇解读基于 Redux 版本 4.0.1。
 > 完整的注释发在这个仓库 [redux-interpretation](https://github.com/hhking/redux-interpretation)
 
 Redux 的源码很短，核心就是实现下面这些 api，也是我们使用的时候会遇到的。
