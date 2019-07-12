@@ -5,7 +5,7 @@ issue: 38
 date: 2018-12-03 21:44:47
 categories: ["前端"]
 tags: ["Front-end", "awesome", "前端"]
-top: 10
+# top: 10
 header-img: /images/awesome-front-end.jpg
 header-mask: 0.3
 catalog: false
