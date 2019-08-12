@@ -1,0 +1,37 @@
+---
+title: 《你读我记》小程序
+subtitle: reading keeper
+issue: -1
+date: 2019-08-12 23:12:44
+categories: ['小程序']
+tags: ['小程序', 'Node', 'egg', 'Taro']
+---
+
+## 缘起
+上班通勤时间很长，在地铁上竟成了我看书最多的地方。看过很多书、小说，也忘了很多。
+
+小说 App 和 iReader 都带有阅读记录的时长，但是我经常是各个地方、各个姿势、各个类型都会看，没法统一起来。于是乎，就想有个记录的地方，也试过不少有次功能的 App，各有特色，看起来也不复杂，何不自己做个呢？
+
+
+## 搞起
+想了很久，忙忙碌碌，终究是懒，断断续续至今，终于做了个线上版的小程序 —— **你读我记**
+
+也算是自己体验了一下小程序开发，从前端到后端，到部署上线，到最后发正式版，磕磕碰碰，竟然过去将近两个月了。
+
+小程序主要用的是：[Taro](https://taro.aotu.io/)、[Taro UI](https://taro-ui.aotu.io/#/)、[wux-weapp](https://github.com/wux-weapp/wux-weapp)
+后台用的是：[egg](https://eggjs.org/zh-cn/intro/)、MySQL、Nginx 代理
+
+没有复杂的东西，只是去接触和尝试了一下相关的内容，最重要的是一个产品，从想法到落地实现，最终上线。
+
+## 使用
+目前主要自己使用，虽然还不少问题，但是不影响使用。有空慢慢完善，后续再出个总结。
+
+下面是我最近使用的记录截图
+![](/images/reading-keeper-my.PNG)
+
+## 扫一扫
+最后奉上小程序码
+
+![](/images/reading-keeper.png)
+
+THE END！
