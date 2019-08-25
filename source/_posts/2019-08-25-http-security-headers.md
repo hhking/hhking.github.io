@@ -1,7 +1,7 @@
 ---
 title: HTTP 和安全相关的头信息
 subtitle: HTTP Security Headers
-issue: -1
+issue: 46
 date: 2019-08-25 17:01:33
 categories: ['前端']
 tags: ['前端', 'HTTP']
