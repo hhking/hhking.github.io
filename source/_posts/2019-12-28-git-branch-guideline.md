@@ -1,7 +1,7 @@
 ---
 title: Git 分支开发规范
 subtitle: Git Branch Guideline
-issue: -1
+issue: 47
 date: 2019-12-28 11:30:39
 categories: ['Git']
 tags: ['Git']
