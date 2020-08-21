@@ -1,0 +1,822 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+
+    
+    
+  <url>
+    <loc>https://blog.hhking.cn/2018/12/11/copying-objects-in-javascript/</loc>
+    <lastmod>2020-08-21T11:20:08.931Z</lastmod>
+    <data>
+        <display>
+        <title>[译]JavaScript 如何复制对象</title>
+        <pubTime>2018-12-11T11:14:13.000Z</pubTime>
+        
+        <tag>复制对象</tag>
+         
+        <tag>浅复制</tag>
+         
+        <tag>深复制</tag>
+         
+         
+           
+             
+              <breadCrumb title="翻译" url="https://blog.hhking.cn/categories/%E7%BF%BB%E8%AF%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.hhking.cn/2017/02/26/react-technology-stack/</loc>
+    <lastmod>2020-08-21T11:20:08.931Z</lastmod>
+    <data>
+        <display>
+        <title>React开发技术栈</title>
+        <pubTime>2017-02-26T12:26:12.000Z</pubTime>
+        
+        <tag>React</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="https://blog.hhking.cn/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+             
+              <breadCrumb title="React" url="https://blog.hhking.cn/categories/%E5%89%8D%E7%AB%AF/React/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.hhking.cn/2017/03/04/mobile-refactoring-mark/</loc>
+    <lastmod>2020-08-21T11:20:08.931Z</lastmod>
+    <data>
+        <display>
+        <title>移动端重构笔记</title>
+        <pubTime>2017-03-04T08:24:27.000Z</pubTime>
+        
+        <tag>移动端</tag>
+         
+        <tag>重构</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="https://blog.hhking.cn/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+             
+              <breadCrumb title="CSS" url="https://blog.hhking.cn/categories/%E5%89%8D%E7%AB%AF/CSS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.hhking.cn/2017/03/12/webpack-guide/</loc>
+    <lastmod>2020-08-21T11:20:08.931Z</lastmod>
+    <data>
+        <display>
+        <title>webpack 2 配置指南</title>
+        <pubTime>2017-03-12T09:55:05.000Z</pubTime>
+        
+        <tag>React</tag>
+         
+        <tag>webpack</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="https://blog.hhking.cn/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+             
+              <breadCrumb title="webpack" url="https://blog.hhking.cn/categories/%E5%89%8D%E7%AB%AF/webpack/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.hhking.cn/2018/08/10/browser-cache/</loc>
+    <lastmod>2020-08-21T11:20:08.931Z</lastmod>
+    <data>
+        <display>
+        <title>浏览器的缓存机制</title>
+        <pubTime>2018-08-10T06:36:08.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>浏览器缓存</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="https://blog.hhking.cn/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.hhking.cn/2018/08/15/extensions-for-vsc/</loc>
+    <lastmod>2020-08-21T11:20:08.931Z</lastmod>
+    <data>
+        <display>
+        <title>前端 vscode 插件推荐</title>
+        <pubTime>2018-08-15T11:02:35.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>vscode</tag>
+         
+        <tag>插件</tag>
+         
+         
+           
+             
+              <breadCrumb title="vscode" url="https://blog.hhking.cn/categories/vscode/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.hhking.cn/2018/08/23/exports-vs-moduleexports/</loc>
+    <lastmod>2020-08-21T11:20:08.931Z</lastmod>
+    <data>
+        <display>
+        <title>Node.js 之 module.exports 和 exports</title>
+        <pubTime>2018-08-23T11:13:58.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>Node</tag>
+         
+         
+           
+             
+              <breadCrumb title="Node.js" url="https://blog.hhking.cn/categories/Node-js/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.hhking.cn/2018/08/25/https-explained-with-carrier-pigeons/</loc>
+    <lastmod>2020-08-21T11:20:08.931Z</lastmod>
+    <data>
+        <display>
+        <title>[译] 鸽子传信解释 HTTPS</title>
+        <pubTime>2018-08-25T12:31:26.000Z</pubTime>
+        
+        <tag>HTTPS</tag>
+         
+        <tag>对称加密</tag>
+         
+        <tag>非对称加密</tag>
+         
+         
+           
+             
+              <breadCrumb title="翻译" url="https://blog.hhking.cn/categories/%E7%BF%BB%E8%AF%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.hhking.cn/2018/09/04/http-request-library-with-axios/</loc>
+    <lastmod>2020-08-21T11:20:08.931Z</lastmod>
+    <data>
+        <display>
+        <title>[译] axios 内部设计分析</title>
+        <pubTime>2018-09-04T12:06:10.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>Ajax</tag>
+         
+        <tag>源码分析</tag>
+         
+         
+           
+             
+              <breadCrumb title="翻译" url="https://blog.hhking.cn/categories/%E7%BF%BB%E8%AF%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.hhking.cn/2018/09/08/i-never-understood-javascript-closures/</loc>
+    <lastmod>2020-08-21T11:20:08.931Z</lastmod>
+    <data>
+        <display>
+        <title>[译] 我从没理解过 JavaScript 闭包</title>
+        <pubTime>2018-09-08T13:59:11.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>JavaScript</tag>
+         
+        <tag>闭包</tag>
+         
+         
+           
+             
+              <breadCrumb title="翻译" url="https://blog.hhking.cn/categories/%E7%BF%BB%E8%AF%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.hhking.cn/2018/09/12/mindset-lessons-from-a-year-with-react/</loc>
+    <lastmod>2020-08-21T11:20:08.931Z</lastmod>
+    <data>
+        <display>
+        <title>[译] 使用 React 一年后，我学到的最重要经验</title>
+        <pubTime>2018-09-12T12:27:23.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>React</tag>
+         
+        <tag>JavaScript</tag>
+         
+        <tag>经验分享</tag>
+         
+         
+           
+             
+              <breadCrumb title="翻译" url="https://blog.hhking.cn/categories/%E7%BF%BB%E8%AF%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.hhking.cn/2018/09/18/react-lifecycle-change/</loc>
+    <lastmod>2020-08-21T11:20:08.931Z</lastmod>
+    <data>
+        <display>
+        <title>重新认识 React 生命周期</title>
+        <pubTime>2018-09-18T11:48:51.000Z</pubTime>
+        
+        <tag>React</tag>
+         
+        <tag>生命周期</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="https://blog.hhking.cn/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+             
+              <breadCrumb title="React" url="https://blog.hhking.cn/categories/%E5%89%8D%E7%AB%AF/React/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.hhking.cn/2018/09/21/9-neat-javascript-tricks/</loc>
+    <lastmod>2020-08-21T11:20:08.931Z</lastmod>
+    <data>
+        <display>
+        <title>[译] 5 分钟学习一些优雅的 JavaScript 技巧</title>
+        <pubTime>2018-09-21T09:49:44.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>JavaScript</tag>
+         
+        <tag>经验分享</tag>
+         
+         
+           
+             
+              <breadCrumb title="翻译" url="https://blog.hhking.cn/categories/%E7%BF%BB%E8%AF%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.hhking.cn/2018/09/28/react-high-order-components/</loc>
+    <lastmod>2020-08-21T11:20:08.931Z</lastmod>
+    <data>
+        <display>
+        <title>React 高阶组件其实很简单</title>
+        <pubTime>2018-09-28T11:23:34.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>React</tag>
+         
+        <tag>高阶组件</tag>
+         
+        <tag>High-Order Components</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="https://blog.hhking.cn/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+             
+              <breadCrumb title="React" url="https://blog.hhking.cn/categories/%E5%89%8D%E7%AB%AF/React/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.hhking.cn/2018/10/01/5-easy-steps-to-understanding-json-web-tokens/</loc>
+    <lastmod>2020-08-21T11:20:08.931Z</lastmod>
+    <data>
+        <display>
+        <title>[译] 简单 5 步，理解 JWT</title>
+        <pubTime>2018-10-01T12:03:05.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>JSON Web Tokens</tag>
+         
+        <tag>JWT</tag>
+         
+         
+           
+             
+              <breadCrumb title="翻译" url="https://blog.hhking.cn/categories/%E7%BF%BB%E8%AF%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.hhking.cn/2018/10/24/ultimate-guide-to-execution-contexts-hoisting-scopes-and-closures-in-javascript/</loc>
+    <lastmod>2020-08-21T11:20:08.931Z</lastmod>
+    <data>
+        <display>
+        <title>[译]JavaScript 终极指南之执行上下文、变量提升、作用域和闭包</title>
+        <pubTime>2018-10-24T15:18:37.000Z</pubTime>
+        
+        <tag>JavaScript</tag>
+         
+        <tag>闭包</tag>
+         
+        <tag>执行上下文</tag>
+         
+        <tag>Execution Contexts</tag>
+         
+        <tag>变量提升</tag>
+         
+        <tag>Hoisting</tag>
+         
+        <tag>作用域</tag>
+         
+        <tag>Scopes</tag>
+         
+        <tag>Closures</tag>
+         
+         
+           
+             
+              <breadCrumb title="翻译" url="https://blog.hhking.cn/categories/%E7%BF%BB%E8%AF%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.hhking.cn/2018/11/24/aliyun-gitlab-install/</loc>
+    <lastmod>2020-08-21T11:20:08.931Z</lastmod>
+    <data>
+        <display>
+        <title>阿里云 GitLab 折腾笔记</title>
+        <pubTime>2018-11-24T15:09:44.000Z</pubTime>
+        
+        <tag>阿里云</tag>
+         
+        <tag>CentOS 7</tag>
+         
+        <tag>GitLab</tag>
+         
+         
+           
+             
+              <breadCrumb title="GitLab" url="https://blog.hhking.cn/categories/GitLab/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.hhking.cn/2018/11/29/html5-img-upload/</loc>
+    <lastmod>2020-08-21T11:20:08.931Z</lastmod>
+    <data>
+        <display>
+        <title>HTML5 图片上传解决方案</title>
+        <pubTime>2018-11-29T06:18:59.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>HTML5</tag>
+         
+        <tag>图片上传</tag>
+         
+        <tag>图片压缩</tag>
+         
+        <tag>图片预览</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="https://blog.hhking.cn/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.hhking.cn/2018/12/03/awesome-front-end/</loc>
+    <lastmod>2020-08-21T11:20:08.931Z</lastmod>
+    <data>
+        <display>
+        <title>Awesome Font-end</title>
+        <pubTime>2018-12-03T13:44:47.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>Front-end</tag>
+         
+        <tag>awesome</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="https://blog.hhking.cn/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.hhking.cn/2017/02/19/npm-install/</loc>
+    <lastmod>2020-08-21T11:20:08.931Z</lastmod>
+    <data>
+        <display>
+        <title>npm install慢或者无响应解决方案</title>
+        <pubTime>2017-02-19T08:41:34.000Z</pubTime>
+        
+        <tag>Node</tag>
+         
+        <tag>npm</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="https://blog.hhking.cn/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+             
+              <breadCrumb title="npm" url="https://blog.hhking.cn/categories/%E5%89%8D%E7%AB%AF/npm/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.hhking.cn/2019/03/10/webpack-migrate2v4-from-v3/</loc>
+    <lastmod>2020-08-21T11:20:08.931Z</lastmod>
+    <data>
+        <display>
+        <title>webpack4 升级记</title>
+        <pubTime>2019-03-10T13:38:03.000Z</pubTime>
+        
+        <tag>webpack</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.hhking.cn/2019/03/16/hooks-intro-note/</loc>
+    <lastmod>2020-08-21T11:20:08.931Z</lastmod>
+    <data>
+        <display>
+        <title>React Hooks 阅读笔记 —— Hooks 简介</title>
+        <pubTime>2019-03-16T07:03:51.000Z</pubTime>
+        
+        <tag>React</tag>
+         
+        <tag>React Hooks</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="https://blog.hhking.cn/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+             
+              <breadCrumb title="React" url="https://blog.hhking.cn/categories/%E5%89%8D%E7%AB%AF/React/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.hhking.cn/2019/04/02/babel-v7-update/</loc>
+    <lastmod>2020-08-21T11:20:08.931Z</lastmod>
+    <data>
+        <display>
+        <title>Babel 7 升级实践</title>
+        <pubTime>2019-04-02T04:14:49.000Z</pubTime>
+        
+        <tag>Babel</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="https://blog.hhking.cn/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+             
+              <breadCrumb title="Babel" url="https://blog.hhking.cn/categories/%E5%89%8D%E7%AB%AF/Babel/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.hhking.cn/2019/07/12/redux-interpretation/</loc>
+    <lastmod>2020-08-21T11:20:08.931Z</lastmod>
+    <data>
+        <display>
+        <title>Redux 源码解读</title>
+        <pubTime>2019-07-12T02:42:14.000Z</pubTime>
+        
+        <tag>Redux</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="https://blog.hhking.cn/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+             
+              <breadCrumb title="Redux" url="https://blog.hhking.cn/categories/%E5%89%8D%E7%AB%AF/Redux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.hhking.cn/2019/08/12/reading-keeper/</loc>
+    <lastmod>2020-08-21T11:20:08.931Z</lastmod>
+    <data>
+        <display>
+        <title>《你读我记》小程序</title>
+        <pubTime>2019-08-12T15:12:44.000Z</pubTime>
+        
+        <tag>Node</tag>
+         
+        <tag>小程序</tag>
+         
+        <tag>egg</tag>
+         
+        <tag>Taro</tag>
+         
+         
+           
+             
+              <breadCrumb title="小程序" url="https://blog.hhking.cn/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.hhking.cn/2019/08/25/http-security-headers/</loc>
+    <lastmod>2020-08-21T11:20:08.931Z</lastmod>
+    <data>
+        <display>
+        <title>HTTP 和安全相关的头信息</title>
+        <pubTime>2019-08-25T09:01:33.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>HTTP</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="https://blog.hhking.cn/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.hhking.cn/2019/12/28/git-branch-guideline/</loc>
+    <lastmod>2020-08-21T11:20:08.931Z</lastmod>
+    <data>
+        <display>
+        <title>Git 分支开发规范</title>
+        <pubTime>2019-12-28T03:30:39.000Z</pubTime>
+        
+        <tag>Git</tag>
+         
+         
+           
+             
+              <breadCrumb title="Git" url="https://blog.hhking.cn/categories/Git/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.hhking.cn/2020/08/21/babel-with-node-modules/</loc>
+    <lastmod>2020-08-21T11:20:08.931Z</lastmod>
+    <data>
+        <display>
+        <title>从 Babel7 编译 node_modules 报错说起</title>
+        <pubTime>2020-08-21T11:06:48.000Z</pubTime>
+        
+        <tag>Babel</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="https://blog.hhking.cn/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+             
+              <breadCrumb title="Babel" url="https://blog.hhking.cn/categories/%E5%89%8D%E7%AB%AF/Babel/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.hhking.cn/2015/03/10/hello-world/</loc>
+    <lastmod>2020-08-21T11:20:08.931Z</lastmod>
+    <data>
+        <display>
+        <title>Hello World</title>
+        <pubTime>2015-03-10T03:10:16.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="说明" url="https://blog.hhking.cn/categories/%E8%AF%B4%E6%98%8E/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.hhking.cn/2015/03/26/my-new-post20150326/</loc>
+    <lastmod>2020-08-21T11:20:08.931Z</lastmod>
+    <data>
+        <display>
+        <title>jQuery实现输入框标签的自动添加和删除等操作</title>
+        <pubTime>2015-03-26T04:51:44.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>jQuery</tag>
+         
+        <tag>tags</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="https://blog.hhking.cn/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.hhking.cn/2015/03/10/the-start-of-my-blog-welcome/</loc>
+    <lastmod>2020-08-21T11:20:08.931Z</lastmod>
+    <data>
+        <display>
+        <title>轻轻地，我来了。</title>
+        <pubTime>2015-03-10T03:20:16.000Z</pubTime>
+        
+        <tag>About</tag>
+         
+         
+           
+             
+              <breadCrumb title="浮生若梦" url="https://blog.hhking.cn/categories/%E6%B5%AE%E7%94%9F%E8%8B%A5%E6%A2%A6/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.hhking.cn/2015/03/22/yahuo/</loc>
+    <lastmod>2020-08-21T11:20:08.931Z</lastmod>
+    <data>
+        <display>
+        <title>雅​虎​关​于​性​能​优​化​的​35条​军​规</title>
+        <pubTime>2015-03-22T10:27:22.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>性能优化</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="https://blog.hhking.cn/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.hhking.cn/2015/03/23/%E8%BF%81%E7%A7%BB%E5%88%B0hexo/</loc>
+    <lastmod>2020-08-21T11:20:08.931Z</lastmod>
+    <data>
+        <display>
+        <title>从 Wordpress 迁移到 Hexo</title>
+        <pubTime>2015-03-23T08:36:57.000Z</pubTime>
+        
+        <tag>博客</tag>
+         
+        <tag>文章</tag>
+         
+         
+           
+             
+              <breadCrumb title="浮生若梦" url="https://blog.hhking.cn/categories/%E6%B5%AE%E7%94%9F%E8%8B%A5%E6%A2%A6/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+    
+    
+    
+    
+  <url>
+    <loc>https://blog.hhking.cn/2015/03/23/20150323/</loc>
+    <lastmod>2020-08-21T11:20:08.927Z</lastmod>
+    <data>
+        <display>
+        <title>之前写的一些东西--简单图片轮播·jQuery小应用·PSD稿还原</title>
+        <pubTime>2015-03-23T12:35:13.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>jQuery</tag>
+         
+        <tag>图片轮播</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="https://blog.hhking.cn/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+</urlset>
